@@ -57,7 +57,7 @@ steps:
 # - ${{ if eq(variables['Build.SourceBranch'], 'refs/tags/*') }}:
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
-  # condition: eq(variables['Build.SourceBranch'], 'refs/tags/*')
+  condition: eq(variables['Build.SourceBranch'], 'refs/tags/*')
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
