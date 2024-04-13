@@ -47,16 +47,12 @@ steps:
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
+  condition: ne(variables['Build.SourceBranch'], 'refs/tags/*')
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-# - task: NuGetCommand@2
-#   inputs:
-#     command: 'push'
-#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-#     nuGetFeedType: 'internal'
-#     publishVstsFeed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/c709827f-4e53-485b-ae34-a40a5dab35c4'
+    
 # - ${{ if eq(variables['Build.SourceBranch'], 'refs/tags/*') }}:
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
