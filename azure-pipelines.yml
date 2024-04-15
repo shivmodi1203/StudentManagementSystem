@@ -18,7 +18,8 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  buildConfiguration: 'Release'
+  # buildConfiguration: 'Release'
+  buildConfiguration: Debug
 
 steps:
 - task: DotNetCoreCLI@2
@@ -48,16 +49,15 @@ steps:
     zipAfterPublish: false
 
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
-  condition: and(ne(variables['Build.SourceBranch'], 'refs/tags/*'), eq(variables['Build.SourceBranch'], 'refs/heads/devops'))
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Publish Artifact'
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'drop'
+#     publishLocation: 'Container'
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
+  # condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
