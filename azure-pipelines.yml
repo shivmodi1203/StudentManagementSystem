@@ -12,7 +12,7 @@ trigger:
       - '*'
   branches:
     exclude:
-      - devops
+      - main
 
 pool:
   vmImage: ubuntu-latest
