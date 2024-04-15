@@ -47,7 +47,7 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
-    buildProperties: 'buildConfiguration=Release'
+    buildProperties: 'buildConfiguration=Debug'
     
 
 - task: PublishBuildArtifacts@1
