@@ -50,7 +50,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/')
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/devops')
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
