@@ -19,7 +19,7 @@ pool:
 
 variables:
   isTagOrientedChange: $[startsWith(variables['Build.SourceBranch'], 'refs/tags/')]
-  buildConfiguration:  
+  buildConfiguration: 
   ${{ if eq(variables['isTagOrientedChange'], 'True') }}: 'Release'
   else: 'Debug'
 steps:
