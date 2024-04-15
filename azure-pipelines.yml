@@ -50,7 +50,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
-  condition: ne(variables['Build.SourceBranch'], 'refs/heads/*')
+  condition: ne(variables['Build.SourceBranch'], 'refs/tags/*')
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
