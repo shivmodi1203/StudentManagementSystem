@@ -18,7 +18,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  isTagOrientedChange: $[startsWith(variables['Build.SourceBranch'], 'refs/tags/')]
+  buildConfiguration: Release
 
 steps:
 - task: DotNetCoreCLI@2 
@@ -29,14 +29,13 @@ steps:
     feedsToUse: 'select'
 - task: DotNetCoreCLI@2
   displayName: Build-Release
-  condition: eq(variables['isTagOrientedChange'], 'True')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration Release'
 - task: DotNetCoreCLI@2
   displayName: Build-Debug
-  condition: eq(variables['isTagOrientedChange'], 'False')
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
