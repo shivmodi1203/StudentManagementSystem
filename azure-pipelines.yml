@@ -28,14 +28,14 @@ steps:
     projects: '**/*.csproj'
     feedsToUse: 'select'
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: Build-Release
   condition: eq(variables['isTagOrientedChange'], 'True')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration Release'
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: Build-Debug
   condition: eq(variables['isTagOrientedChange'], 'False')
   inputs:
     command: 'build'
