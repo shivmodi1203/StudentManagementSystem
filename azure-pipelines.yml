@@ -46,6 +46,8 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: false
+
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   condition: ne(variables['Build.SourceBranch'], 'refs/tags/*')
@@ -53,13 +55,11 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-    
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/tags/*') }}:
-  - task: DotNetCoreCLI@2
-    displayName: 'Push Artifact - Tag-Oriented Changes'
-    # condition: eq(variables['Build.SourceBranch'], 'refs/tags/*')
-    inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/1e153597-5d80-41c8-a201-050585798e03'
+- task: DotNetCoreCLI@2
+  displayName: 'Push Artifact - Tag-Oriented Changes'
+  condition: eq(variables['Build.SourceBranch'], 'refs/tags/*')
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/1e153597-5d80-41c8-a201-050585798e03'
