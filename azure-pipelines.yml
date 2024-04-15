@@ -49,12 +49,12 @@ steps:
     zipAfterPublish: false
 
 
-# - task: PublishBuildArtifacts@1
-#   displayName: 'Publish Artifact'
-#   inputs:
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#     ArtifactName: 'drop'
-#     publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
   # condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
