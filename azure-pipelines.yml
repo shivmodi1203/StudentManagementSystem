@@ -18,7 +18,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  isTagOrientedChange: $[startsWith(variables['Build.SourceBranch'], 'refs/tags/')]
+  isTagOrientedChange: $[contains(variables['Build.SourceBranch'], 'refs/tags/')]
   buildConfiguration: 
   ${{ if eq(variables['isTagOrientedChange'], 'True') }}: 'Release'
   else: 'Debug'
