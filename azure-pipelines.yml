@@ -18,9 +18,12 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  # buildConfiguration: 'Release'
-  buildConfiguration: Debug
-
+  isTagOrientedChange: $[startsWith(variables['Build.SourceBranch'], 'refs/tags/')]
+  buildConfiguration: 
+  ${{ if eq(variables['isTagOrientedChange'], 'True') }}:
+    'Release'
+  else:
+    'Debug'
 steps:
 - task: DotNetCoreCLI@2
   displayName: Restore
@@ -50,6 +53,7 @@ steps:
 
 
 - task: PublishBuildArtifacts@1
+  condition: eq(variables['isTagOrientedChange'], 'False')
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
@@ -57,6 +61,7 @@ steps:
     publishLocation: 'Container'
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
+  condition: eq(variables['isTagOrientedChange'], 'True')
   # condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
   inputs:
     command: 'push'
