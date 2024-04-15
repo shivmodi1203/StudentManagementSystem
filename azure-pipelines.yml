@@ -50,14 +50,14 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
-  condition: ne(variables['Build.SourceBranch'], 'refs/tags/*')
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/*')
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
-  condition: contains(variables['Build.SourceBranch'], 'refs/tags/*')
+  condition: eq(variables['Build.SourceBranch'], 'refs/tags/2.0')
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
