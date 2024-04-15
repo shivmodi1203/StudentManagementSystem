@@ -36,7 +36,6 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 - task: DotNetCoreCLI@2
   displayName: Pack
   inputs:
@@ -54,7 +53,7 @@ steps:
 
 
 - task: PublishBuildArtifacts@1
-  condition: not(variables['isTagOrientedChange'])
+  condition: ne(variables['isTagOrientedChange'], 'True')
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
