@@ -11,7 +11,7 @@ trigger:
       - release.*
   branches:
     include:
-      - devops
+      - main
 
 pool:
   vmImage: ubuntu-latest
