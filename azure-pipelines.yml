@@ -47,6 +47,8 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
+    buildProperties: 'buildConfiguration=Release'
+    
 
 - task: PublishBuildArtifacts@1
   condition: eq(variables['isTagOrientedChange'], 'False')
