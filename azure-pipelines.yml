@@ -51,11 +51,11 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
-# - ${{ if eq(variables['Build.SourceBranch'], 'refs/branches/*') }}:
-- task: DotNetCoreCLI@2
-  condition: eq(variables['Build.SourceBranch'], 'refs/tags/*')
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: '9c968513-08a6-4f15-82d4-30b51a192ee4'
+- ${{ if eq(variables['Build.SourceBranch'], 'refs/tags/*') }}:
+  - task: DotNetCoreCLI@2
+    # condition: eq(variables['Build.SourceBranch'], 'refs/tags/*')
+    inputs:
+      command: 'push'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      nuGetFeedType: 'internal'
+      publishVstsFeed: '9c968513-08a6-4f15-82d4-30b51a192ee4'
