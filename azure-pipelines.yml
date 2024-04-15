@@ -57,7 +57,7 @@ steps:
     publishLocation: 'Container'
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
+  condition: ne(variables['Build.SourceBranch'], 'refs/tags/')
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
