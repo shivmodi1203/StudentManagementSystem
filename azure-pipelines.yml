@@ -29,7 +29,7 @@ steps:
     feedsToUse: 'select'
 - task: DotNetCoreCLI@2
   displayName: Build-Release
-  condition: eq(variables['Build.SourceBranch'], 'refs/tags/')
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
