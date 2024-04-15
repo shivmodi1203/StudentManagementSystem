@@ -19,11 +19,9 @@ pool:
 
 variables:
   isTagOrientedChange: $[startsWith(variables['Build.SourceBranch'], 'refs/tags/')]
-  buildConfiguration: 
-  ${{ if eq(variables['isTagOrientedChange'], 'True') }}:
-    'Release'
-  else:
-    'Debug'
+  buildConfiguration:  
+  ${{ if eq(variables['isTagOrientedChange'], 'True') }}: 'Release'
+  else: 'Debug'
 steps:
 - task: DotNetCoreCLI@2
   displayName: Restore
