@@ -29,13 +29,14 @@ steps:
     feedsToUse: 'select'
 - task: DotNetCoreCLI@2
   displayName: Build-Release
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration Release'
 - task: DotNetCoreCLI@2
   displayName: Build-Debug
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
+  condition: eq(startsWith(variables['Build.SourceBranch'], 'refs/tags/'),'False')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
@@ -46,7 +47,6 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
-    # buildProperties: 'buildConfiguration=Debug'
     
 
 - task: PublishBuildArtifacts@1
