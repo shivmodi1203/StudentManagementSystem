@@ -9,7 +9,7 @@
 trigger:
   tags:
     include:
-      - release.*
+      - '*'
   branches:
     include:
       - devops
