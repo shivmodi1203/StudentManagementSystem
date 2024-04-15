@@ -54,7 +54,7 @@ steps:
 
 
 - task: PublishBuildArtifacts@1
-  condition: xor(variables['isTagOrientedChange'], 'True')
+  condition: not(variables['isTagOrientedChange'])
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
