@@ -19,11 +19,13 @@ pool:
 
 variables:
   isTagOrientedChange: $[contains(variables['Build.SourceBranch'], 'refs/tags/')]
-  buildConfiguration: 
-  ${{ if eq(variables['isTagOrientedChange'], 'True') }}: 'Release'
-  else: 'Debug'
+  # buildConfiguration: ${{ if eq(variables['isTagOrientedChange'], 'True') }}:
+  #                       'Release'
+  #                     else: 
+  #                       'Debug'
+  buildConfiguration: Release
 steps:
-- task: DotNetCoreCLI@2
+- task: DotNetCoreCLI@2 
   displayName: Restore
   inputs:
     command: 'restore'
@@ -34,7 +36,6 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 - task: DotNetCoreCLI@2
   displayName: Pack
   inputs:
