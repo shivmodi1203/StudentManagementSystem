@@ -48,20 +48,20 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfigurationTag)'
+    arguments: '--configuration $(buildConfiguration)'
 - task: DotNetCoreCLI@2
   displayName: Build-Debug
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/devops')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfigurationBranch)'
+    arguments: '--configuration $(buildConfiguration)'
 - task: DotNetCoreCLI@2
   displayName: Pack
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'off'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
