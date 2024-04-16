@@ -30,6 +30,10 @@ steps:
     
 - script: echo $(Build.SourceBranch)
   displayName: 'Debug Source Branch'
+
+- script: env | sort
+  displayName: 'Debug Environment Variables'
+
 - task: DotNetCoreCLI@2
   displayName: Build-Release
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
