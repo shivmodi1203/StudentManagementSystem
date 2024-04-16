@@ -28,11 +28,11 @@ steps:
     projects: '**/*.csproj'
     feedsToUse: 'select'
     
-- script: echo $(Build.SourceBranch)
-  displayName: 'Debug Source Branch'
+# - script: echo $(Build.SourceBranch)
+#   displayName: 'Debug Source Branch'
 
-- script: env | sort
-  displayName: 'Debug Environment Variables'
+# - script: env | sort
+#   displayName: 'Debug Environment Variables'
 
 - task: DotNetCoreCLI@2
   displayName: Build-Release
@@ -47,7 +47,7 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--configuration Debug'
 - task: DotNetCoreCLI@2
   displayName: Pack
   inputs:
@@ -55,16 +55,12 @@ steps:
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
     
-
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-    
-- script: echo $(Build.SourceBranch)
-  displayName: 'Debug Source Branch'
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
