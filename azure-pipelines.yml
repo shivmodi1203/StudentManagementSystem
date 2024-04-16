@@ -27,6 +27,9 @@ steps:
     command: 'restore'
     projects: '**/*.csproj'
     feedsToUse: 'select'
+    
+- script: echo $(Build.SourceBranch)
+  displayName: 'Debug Source Branch'
 - task: DotNetCoreCLI@2
   displayName: Build-Release
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
@@ -40,13 +43,15 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration Debug'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 - task: DotNetCoreCLI@2
   displayName: Pack
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
+    
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
