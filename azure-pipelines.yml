@@ -58,6 +58,9 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+    
+- script: echo $(Build.SourceBranch)
+  displayName: 'Debug Source Branch'
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
