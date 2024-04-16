@@ -18,7 +18,9 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  buildConfiguration: Debug
+  # buildConfiguration: Debug
+  buildConfigurationTag: 'Release'
+  buildConfigurationBranch: 'Debug'
 
 steps:
 - task: DotNetCoreCLI@2 
@@ -40,14 +42,14 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration Release'
+    arguments: '--configuration $(buildConfigurationTag)'
 - task: DotNetCoreCLI@2
   displayName: Build-Debug
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/devops')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration Debug'
+    arguments: '--configuration $(buildConfigurationBranch)'
 - task: DotNetCoreCLI@2
   displayName: Pack
   inputs:
