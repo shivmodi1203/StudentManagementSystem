@@ -18,9 +18,15 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  # buildConfiguration: Debug
-  buildConfigurationTag: 'Release'
-  buildConfigurationBranch: 'Debug'
+  isTagOriented: 
+  ${{if startsWith(variables['Build.SourceBranch'], 'refs/tags/')}}: 
+    buildConfiguration: Release
+  ${{else}}: 
+    buildConfiguration: Debug
+  
+  # buildConfiguration: Release
+  # buildConfigurationTag: 'Release'
+  # buildConfigurationBranch: 'Debug'
 
 steps:
 - task: DotNetCoreCLI@2 
@@ -55,7 +61,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'off'
+    versioningScheme: 'byBuildNumber'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
