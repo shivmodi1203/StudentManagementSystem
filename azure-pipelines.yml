@@ -23,10 +23,6 @@ variables:
     buildConfiguration: Release
   ${{else}}: 
     buildConfiguration: Debug
-  
-  # buildConfiguration: Release
-  # buildConfigurationTag: 'Release'
-  # buildConfigurationBranch: 'Debug'
 
 steps:
 - task: DotNetCoreCLI@2 
