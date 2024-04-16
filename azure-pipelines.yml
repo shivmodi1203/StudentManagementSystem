@@ -36,7 +36,7 @@ steps:
     arguments: '--configuration Release'
 - task: DotNetCoreCLI@2
   displayName: Build-Debug
-  condition: ne(variables['Build.SourceBranch'], 'refs/tags/')
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
