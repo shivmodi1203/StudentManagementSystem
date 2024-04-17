@@ -32,7 +32,7 @@ steps:
     projects: '**/*.csproj'
     feedsToUse: 'select'
     
-# - script: echo $(Build.SourceBranch)
+- script: echo $(Build.SourceBranch)
 #   displayName: 'Debug Source Branch'
 
 # - script: env | sort
