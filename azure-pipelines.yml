@@ -53,15 +53,15 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
+- script: echo "##vso[task.setvariable variable=PackageVersion]$(Build.SourceBranchName)"
+  displayName: 'Set Package Version'
 - task: DotNetCoreCLI@2
   displayName: Pack
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'byPrereleaseNumber'
-    majorVersion: '1'
-    minorVersion: '0'
-    patchVersion: '0'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'PackageVersion'
     
 
 - task: PublishBuildArtifacts@1
