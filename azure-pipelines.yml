@@ -97,3 +97,10 @@ steps:
     definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
     version: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
+- task: DownloadBuildArtifacts@1
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: 'latest'
+    itemPattern: '**/*.nupkg'
+    downloadPath: '$(System.ArtifactsDirectory)'
