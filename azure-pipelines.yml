@@ -99,7 +99,10 @@ steps:
     downloadPath: '$(System.ArtifactsDirectory)'
 - task: DownloadBuildArtifacts@1
   inputs:
-    buildType: 'current'
+    buildType: 'specific'
+    project: 'e022f26b-90cf-4ad9-9058-6eef871a63a0'
+    pipeline: '12'
+    buildVersionToDownload: 'latest'
     downloadType: 'specific'
     itemPattern: '**/*.nupkg'
     downloadPath: '$(System.ArtifactsDirectory)'
