@@ -100,7 +100,6 @@ steps:
 - task: DownloadBuildArtifacts@1
   inputs:
     buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'latest'
+    downloadType: 'specific'
     itemPattern: '**/*.nupkg'
     downloadPath: '$(System.ArtifactsDirectory)'
