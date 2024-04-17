@@ -62,6 +62,7 @@ steps:
     majorVersion: '1'
     minorVersion: '0'
     patchVersion: '0'
+    buildProperties: '/p:PackageVersion=1.0.0-CI-(Year:yyyy).(Month).(DayOfMonth)$(Rev:.r)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
