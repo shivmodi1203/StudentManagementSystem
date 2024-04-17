@@ -62,7 +62,8 @@ steps:
     majorVersion: '1'
     minorVersion: '0'
     patchVersion: '0'
-    versionSuffix: '$(Build.BuildId)'
+    
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
@@ -77,3 +78,4 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
+    
