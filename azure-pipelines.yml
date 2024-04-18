@@ -108,11 +108,11 @@ steps:
 #     downloadPath: '$(System.ArtifactsDirectory)'
 
 - script: |
-    # Extract the artifact name from the artifact path
-    artifact_name=$(basename "$(Build.ArtifactStagingDirectory)/"*)
+    # Extract the name of the artifact from the PublishBuildArtifacts task output
+    artifact_name=$(echo "$(Build.ArtifactStagingDirectory)")
     
     # Store the artifact name in a pipeline variable
-    echo "##vso[task.setvariable variable=MyArtifactName]$artifact_name"
+    echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
   displayName: 'Store Artifact Name in Variable'
 
-- script: echo $(MyArtifactName)
+- script: echo $(GeneratedArtifactName)
