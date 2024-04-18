@@ -101,5 +101,5 @@ steps:
   
 - script: az devops login
 - script: az devops configure --defaults 'organization'='https://dev.azure.com/shivmodi' 'project'='shiv- Test'
-- script: az artifacts universal download --feed e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9 --name Build.ArtifactStagingDirectory/*.nupkg -v 1.0.0 --path Build.ArtifactStagingDirectory
+- script: az artifacts universal list-publishing-uris --feed dotnet_feed3 --artifact-name Build.ArtifactStagingDirectory/*.nupkg
   displayName: 'List All Artifacts from Artifact feed'
