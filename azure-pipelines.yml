@@ -108,9 +108,9 @@ steps:
 #     downloadPath: '$(System.ArtifactsDirectory)'
 
 - script: |
-    # Read the content of the artifact into a variable
-    artifact_content=$(Build.ArtifactStagingDirectory)/*.nupkg
+    # Extract the name of the artifact from the PublishBuildArtifacts task output
+    artifact_name=$(echo "$(Build.ArtifactStagingDirectory)" | awk -F/ '{print $(NF-1)}')
     
-    # Store the content in a pipeline variable
-    echo "##vso[task.setvariable variable=MyArtifactContent]$artifact_content"
-  displayName: 'Store Artifact in Variable'
+    # Store the artifact name in a pipeline variable
+    echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
+  displayName: 'Store Artifact Name in Variable'
