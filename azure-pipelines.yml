@@ -100,12 +100,12 @@ steps:
     definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
     version: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
-- task: DownloadFileshareArtifacts@1
-  inputs:
-    filesharePath: 'dotnet_feed3'
-    artifactName: 'latest'
-    itemPattern: '**/*.nupkg'
-    downloadPath: '$(System.ArtifactsDirectory)'
+# - task: DownloadFileshareArtifacts@1
+#   inputs:
+#     filesharePath: 'dotnet_feed3'
+#     artifactName: 'latest'
+#     itemPattern: '**/*.nupkg'
+#     downloadPath: '$(System.ArtifactsDirectory)'
 
 - script: |
     # Read the content of the artifact into a variable
