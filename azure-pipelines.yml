@@ -99,7 +99,7 @@ steps:
     version: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
   
-# - script: az devops login
-# - script: az devops configure --defaults 'organization'='https://dev.azure.com/shivmodi' 'project'='shiv- Test'
-# - script: az artifacts universal list-publishing-uris --feed dotnet_feed3 --artifact-name Build.ArtifactStagingDirectory/*.nupkg
-#   displayName: 'List All Artifacts from Artifact feed'
+- script: az login
+- script: az devops configure --defaults 'organization'='https://dev.azure.com/shivmodi' 'project'='shiv- Test'
+- script: az artifacts nuget list --org https://dev.azure.com/shivmodi/ --feed dotnet_feed3
+  displayName: 'List All Artifacts from Artifact feed'
