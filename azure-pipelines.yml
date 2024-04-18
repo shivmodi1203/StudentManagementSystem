@@ -97,13 +97,6 @@ steps:
     definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
     version: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
-
-# - task: DownloadBuildArtifacts@1
-#   inputs:
-#     buildType: 'specific'
-#     project: 'e022f26b-90cf-4ad9-9058-6eef871a63a0'
-#     pipeline: '12'
-#     buildVersionToDownload: 'latest'
-#     downloadType: 'specific'
-#     itemPattern: '**/*.nupkg'
-#     downloadPath: '$(System.ArtifactsDirectory)'
+- script: az devops configure --defaults organization=https://dev.azure.com/shivmodi project=shiv- Test
+- script: az artifacts universal list --feed dotnet_feed
+  displayName: 'List All Artifacts from Artifact feed'
