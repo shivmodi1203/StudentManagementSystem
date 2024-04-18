@@ -109,7 +109,7 @@ steps:
 
 - script: |
     # Read the content of the artifact into a variable
-    artifact_content=$(cat $(Build.ArtifactStagingDirectory)/**/*.nupkg)
+    artifact_content=$(cat $(Build.ArtifactStagingDirectory)/*.nupkg)
     
     # Store the content in a pipeline variable
     echo "##vso[task.setvariable variable=MyArtifactContent]$artifact_content"
