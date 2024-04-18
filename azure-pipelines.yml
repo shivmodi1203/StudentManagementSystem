@@ -110,6 +110,7 @@ steps:
 - script: |
     # Extract the name of the artifact from the PublishBuildArtifacts task output
     artifact_name=$(echo "$(Build.ArtifactStagingDirectory)/*.nupkg")
+    artifact_name=$(basename "$artifact_path")
     
     # Store the artifact name in a pipeline variable
     echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
