@@ -74,7 +74,7 @@ steps:
         minorVersion: '0'
         patchVersion: '0'
 
-# - script: echo $(PackageVersion)
+- script: echo $(PackageVersion)
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
@@ -96,7 +96,7 @@ steps:
     feed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
     view: 'b3749e8e-b314-4d86-80c6-9961b4cd1e58'
     definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
-    version: 'PackageVersion'
+    version: '$(PackageVersion)'
     downloadPath: '$(System.ArtifactsDirectory)'
   
 # - script: az devops login
