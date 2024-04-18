@@ -35,8 +35,8 @@ steps:
 - script: echo $(Build.SourceBranch)
 #   displayName: 'Debug Source Branch'
 
-# - script: env | sort
-#   displayName: 'Debug Environment Variables'
+- script: env | sort
+  displayName: 'Debug Environment Variables'
 
 - task: DotNetCoreCLI@2
   displayName: Build-Release
@@ -96,7 +96,7 @@ steps:
     feed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
     view: 'b3749e8e-b314-4d86-80c6-9961b4cd1e58'
     definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
-    version: '$(Build.SourceBranch)'
+    version: '$(Build.SourceBranchName)'
     downloadPath: '$(System.ArtifactsDirectory)'
   
 - script: az devops login
