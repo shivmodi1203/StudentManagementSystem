@@ -81,12 +81,15 @@ steps:
     name: publishArtifactTask
 
 - script: |
-    # Extract the name of the artifact from the task properties
-    artifact_name=$(echo "$(publishArtifactTask.ArtifactName)")
-    
-    # Store the artifact name in a pipeline variable
-    echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
-  displayName: 'Store Artifact Name in Variable'
+    echo "$(publishArtifactTask.ArtifactName)" > artifactName.txt
+  displayName: 'Store Artifact Name in File'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      artifact_name=$(<artifactName.txt)
+      echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
+  displayName: 'Read Artifact Name from File and Store in Variable'
 
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
@@ -96,20 +99,23 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'current'
-    downloadType: 'specific'
-    itemPattern: '**/*.nupkg'
-    downloadPath: '$(System.ArtifactsDirectory)'
-- task: DownloadPackage@1
-  inputs:
-    packageType: 'nuget'
-    feed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
-    view: 'b3749e8e-b314-4d86-80c6-9961b4cd1e58'
-    definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
-    version: 'latest'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    
+# - task: DownloadBuildArtifacts@1
+#   inputs:
+#     buildType: 'current'
+#     downloadType: 'specific'
+#     itemPattern: '**/*.nupkg'
+#     downloadPath: '$(System.ArtifactsDirectory)'
+
+# - task: DownloadPackage@1
+#   inputs:
+#     packageType: 'nuget'
+#     feed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
+#     view: 'b3749e8e-b314-4d86-80c6-9961b4cd1e58'
+#     definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
+#     version: 'latest'
+#     downloadPath: '$(System.ArtifactsDirectory)'
+
 # - task: DownloadFileshareArtifacts@1
 #   inputs:
 #     filesharePath: 'dotnet_feed3'
@@ -117,11 +123,3 @@ steps:
 #     itemPattern: '**/*.nupkg'
 #     downloadPath: '$(System.ArtifactsDirectory)'
 
-- script: |
-    # Extract the name of the artifact from the PublishBuildArtifacts task output
-    artifact_name=$(echo "$(Build.ArtifactStagingDirectory)")
-    
-    # Store the artifact name in a pipeline variable
-    echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
-    echo $(GeneratedArtifactName)
-  displayName: 'Store Artifact Name in Variable'
