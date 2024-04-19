@@ -113,4 +113,5 @@ steps:
     
     # Store the artifact name in a pipeline variable
     echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
+    echo $(GeneratedArtifactName)
   displayName: 'Store Artifact Name in Variable'
