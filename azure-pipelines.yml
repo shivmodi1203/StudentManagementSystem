@@ -118,5 +118,5 @@ steps:
     echo "##vso[task.setvariable variable=ArtifactName]$artifact_name"
   displayName: 'Store Artifact in Variable'
   
-- script: sudo ls "$(Build.ArtifactStagingDirectory)"
+- script: sudo ls "$(Build.ArtifactStagingDirectory)/*.nupkg"
 
