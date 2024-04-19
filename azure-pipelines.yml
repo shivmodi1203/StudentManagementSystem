@@ -114,9 +114,9 @@ steps:
 - script: |
     # Read the content of the artifact into a variable
     artifact_name=sudo echo $(Build.ArtifactStagingDirectory)/*.nupkg
-    echo $(artifact_name)
+# echo $(artifact_name)
     # Store the content in a pipeline variable
-    echo "##vso[task.setvariable variable=ArtifactName]$artifact_name"
+# echo "##vso[task.setvariable variable=ArtifactName]$artifact_name"
   displayName: 'Store Artifact in Variable'
   
 - script: echo "$(ArtifactName)"
