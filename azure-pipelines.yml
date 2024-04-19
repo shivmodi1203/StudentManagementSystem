@@ -78,6 +78,16 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+    name: publishArtifactTask
+
+- script: |
+    # Extract the name of the artifact from the task properties
+    artifact_name=$(echo "$(publishArtifactTask.ArtifactName)")
+    
+    # Store the artifact name in a pipeline variable
+    echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
+  displayName: 'Store Artifact Name in Variable'
+
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
   # condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
