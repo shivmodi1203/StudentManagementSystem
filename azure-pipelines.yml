@@ -78,7 +78,6 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-    name: publishArtifactTask
 
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
@@ -120,5 +119,5 @@ steps:
     echo "##vso[task.setvariable variable=ArtifactName]$artifact_name"
   displayName: 'Store Artifact in Variable'
   
-- script: echo $(ArtifactName)
+- script: echo "$(ArtifactName)"
 
