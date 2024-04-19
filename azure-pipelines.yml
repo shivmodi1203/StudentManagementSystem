@@ -120,5 +120,5 @@ steps:
     echo "##vso[task.setvariable variable=ArtifactName]$artifact_name"
   displayName: 'Store Artifact in Variable'
   
-- script: echo "$(ArtifactName)"
+- script: ls "$(ArtifactName)"
 
