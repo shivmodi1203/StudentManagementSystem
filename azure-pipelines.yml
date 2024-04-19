@@ -80,17 +80,6 @@ steps:
     publishLocation: 'Container'
     name: publishArtifactTask
 
-- script: |
-    echo "$(publishArtifactTask.ArtifactName)" > artifactName.txt
-  displayName: 'Store Artifact Name in File'
-
-- task: CmdLine@2
-  inputs:
-    script: |
-      artifact_name=$(<artifactName.txt)
-      echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
-  displayName: 'Read Artifact Name from File and Store in Variable'
-
 - task: DotNetCoreCLI@2
   displayName: 'Push Artifact - Tag-Oriented Changes'
   # condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
@@ -99,7 +88,7 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
-    
+
 # - task: DownloadBuildArtifacts@1
 #   inputs:
 #     buildType: 'current'
@@ -122,4 +111,14 @@ steps:
 #     artifactName: 'latest'
 #     itemPattern: '**/*.nupkg'
 #     downloadPath: '$(System.ArtifactsDirectory)'
+
+- script: |
+    # Read the content of the artifact into a variable
+    artifact_name=$(Build.ArtifactStagingDirectory)/*.nupkg
+    
+    # Store the content in a pipeline variable
+    echo "##vso[task.setvariable variable=ArtifactName]$artifact_name"
+  displayName: 'Store Artifact in Variable'
+  
+- script: echo "$(ArtifactName)"
 
