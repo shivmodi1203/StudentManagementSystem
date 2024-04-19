@@ -98,7 +98,7 @@ steps:
     feed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
     view: 'b3749e8e-b314-4d86-80c6-9961b4cd1e58'
     definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
-    version: 'latest'
+    version: '*1.0.0-CI-*'
     downloadPath: '$(System.ArtifactsDirectory)'
 # - task: DownloadFileshareArtifacts@1
 #   inputs:
@@ -107,13 +107,13 @@ steps:
 #     itemPattern: '**/*.nupkg'
 #     downloadPath: '$(System.ArtifactsDirectory)'
 
-- script: |
-    # Extract the name of the artifact from the PublishBuildArtifacts task output
-    artifact_name=$(echo "$(Build.ArtifactStagingDirectory)/*.nupkg")
-    artifact_name=$(basename "$artifact_path")
+# - script: |
+#     # Extract the name of the artifact from the PublishBuildArtifacts task output
+#     artifact_name=$(echo "$(Build.ArtifactStagingDirectory)/*.nupkg")
+#     artifact_name=$(basename "$artifact_path")
     
-    # Store the artifact name in a pipeline variable
-    echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
-  displayName: 'Store Artifact Name in Variable'
+#     # Store the artifact name in a pipeline variable
+#     echo "##vso[task.setvariable variable=GeneratedArtifactName]$artifact_name"
+#   displayName: 'Store Artifact Name in Variable'
 
-- script: echo $(GeneratedArtifactName)
+# - script: echo $(GeneratedArtifactName)
