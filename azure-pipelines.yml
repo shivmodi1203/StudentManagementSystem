@@ -120,5 +120,5 @@ steps:
     echo "##vso[task.setvariable variable=ArtifactName]$artifact_name"
   displayName: 'Store Artifact in Variable'
   
-- script: sudo ls "$(Build.ArtifactStagingDirectory)"
+- script: echo "$(artifact_name)"
 
