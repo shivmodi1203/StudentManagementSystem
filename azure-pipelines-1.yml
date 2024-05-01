@@ -1,0 +1,40 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: DownloadArtifacts
+  displayName: 'Download Artifacts'
+  jobs:
+  - job: Download
+    displayName: 'Download Artifact'
+    steps:
+    - task: DownloadPackage@1
+      inputs:
+        packageType: 'nuget'
+        feed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
+        view: 'b3749e8e-b314-4d86-80c6-9961b4cd1e58'
+        definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
+        version: 'latest'
+        downloadPath: '$(System.ArtifactsDirectory)'
+
+- stage: DeployToAzureFunction
+  displayName: 'Deploy to Azure Function App'
+  dependsOn: DownloadArtifacts
+  jobs:
+  - job: Deploy
+    displayName: 'Deploy to Azure Function App'
+    steps:
+    - task: AzureFunctionApp@1
+      displayName: 'Azure Function App Deploy'
+      inputs:
+        azureSubscription: '<azureSubscription>'
+        appType: 'functionAppLinux'
+        appName: '<functionAppName>'
+        deployToSlotOrASE: true
+        resourceGroupName: '<resourceGroupName>'
+        slotName: '<slotName>'
+        package: '$(System.ArtifactsDirectory)/*.nupkg'
+        runtimeStack: 'DOTNET|6.0'
