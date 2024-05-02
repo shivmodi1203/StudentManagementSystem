@@ -21,13 +21,12 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 - task: DotNetCoreCLI@2
   displayName: Pack
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj;!**/*.Tests.csproj'
+    packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
 
 - task: DotNetCoreCLI@2
@@ -35,15 +34,8 @@ steps:
     command: 'publish'
     publishWebProjects: false
     projects: '**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: false
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
-
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: '**' # Copy all files and folders
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
