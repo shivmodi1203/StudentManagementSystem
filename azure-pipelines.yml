@@ -1,33 +1,83 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
 trigger: none
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
+# variables:
+#   isTagOriented: 
+#   ${{if startsWith(variables['Build.SourceBranch'], 'refs/tags/')}}: 
+#     buildConfiguration: Release
+#   ${{else}}: 
+#     buildConfiguration: Debug
 
-# - script: |
-#     git clone https://github.com/shivmodi1203/StudentManagementSystem.git
-#     ls $(Build.SourcesDirectory)
+steps:
+- task: DotNetCoreCLI@2 
+  displayName: Restore
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    feedsToUse: 'select'
+    
+# - script: echo $(Build.SourceBranch)
+#   displayName: 'Debug Source Branch'
+
+# - script: env | sort
+#   displayName: 'Debug Environment Variables'
+
 - task: DotNetCoreCLI@2
+  displayName: Build-Release
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
 - task: DotNetCoreCLI@2
+  displayName: Build-Debug
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/devops')
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Pack - Branch
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
+
+# - script: echo $(PackageVersion)
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Push Artifact - Tag-Oriented Changes'
+  # condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
+
+- task: DownloadPackage@1
+  inputs:
+    packageType: 'nuget'
+    feed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
+    view: 'b3749e8e-b314-4d86-80c6-9961b4cd1e58'
+    definition: 'b8db45d8-7821-4090-afa1-2963f123f4e6'
+    version: '1.0.0-CI-*'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+
 # - task: trivy@1
 #   inputs:
 #     version: 'latest'
