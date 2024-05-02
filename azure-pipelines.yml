@@ -8,6 +8,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+
+- script: |
+    git clone https://github.com/shivmodi1203/StudentManagementSystem.git
 - task: trivy@1
   inputs:
     version: 'latest'
