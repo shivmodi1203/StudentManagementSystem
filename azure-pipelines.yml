@@ -16,7 +16,7 @@ steps:
   inputs:
     version: 'latest'
     docker: false
-    path: '$(Build.SourcesDirectory)/StudentManagementSystem/'
+    path: 'https://github.com/shivmodi1203/StudentManagementSystem'
     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
     exitCode: '0'
   displayName: "Trivy"
