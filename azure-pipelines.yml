@@ -30,22 +30,22 @@ steps:
 #   displayName: 'Debug Environment Variables'
 
 - task: DotNetCoreCLI@2
-  displayName: Build-Release
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
-- task: DotNetCoreCLI@2
-  displayName: Build-Debug
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/devops')
+  displayName: Build
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
+# - task: DotNetCoreCLI@2
+#   displayName: Build-Debug
+#   condition: eq(variables['Build.SourceBranch'], 'refs/heads/devops')
+#   inputs:
+#     command: 'build'
+#     projects: '**/*.csproj'
+#     arguments: '--configuration $(buildConfiguration)'
+
 - task: DotNetCoreCLI@2
-  displayName: Pack - Branch
+  displayName: Pack
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
@@ -59,14 +59,13 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Push Artifact - Tag-Oriented Changes'
-  # condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
+# - task: DotNetCoreCLI@2
+#   displayName: 'Push Artifact'
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: 'e022f26b-90cf-4ad9-9058-6eef871a63a0/8f547950-a4b2-4b84-891b-ad02cef6d0f9'
 
 - task: DownloadPackage@1
   inputs:
