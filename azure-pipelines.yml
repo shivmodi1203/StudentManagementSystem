@@ -12,7 +12,7 @@ steps:
   inputs:
     version: 'latest'
     docker: false
-    path: '$(Build.SourcesDirectory)'
+    path: '$(Build.SourcesDirectory)/*'
     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
     exitCode: '0'
   displayName: "Trivy"
