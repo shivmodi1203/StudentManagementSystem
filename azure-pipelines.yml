@@ -28,6 +28,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
+    includesource: true
     versioningScheme: 'off'
 
 - task: DotNetCoreCLI@2
