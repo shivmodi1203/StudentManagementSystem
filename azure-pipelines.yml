@@ -11,7 +11,7 @@ steps:
 
 - script: |
     git clone https://github.com/shivmodi1203/StudentManagementSystem.git
-    pwd
+    ls $(Build.SourcesDirectory)
 - task: trivy@1
   inputs:
     version: 'latest'
