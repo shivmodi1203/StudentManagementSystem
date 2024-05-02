@@ -34,7 +34,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: '*/*.csproj'
+    projects: '**/*.csproj'
     zipAfterPublish: false
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
