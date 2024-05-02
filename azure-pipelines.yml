@@ -28,14 +28,15 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj;!**/*.Tests.csproj'
-    includesource: true
     versioningScheme: 'off'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: false
+    projects: '**/*.csproj'
     zipAfterPublish: false
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
