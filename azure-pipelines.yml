@@ -42,17 +42,12 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-
-
-
-
-
-# - task: trivy@1
-#   inputs:
-#     version: 'latest'
-#     docker: false
-#     path: '$(Build.ArtifactStagingDirectory)'
-#     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
-#     exitCode: '0'
-#   displayName: "Trivy"
+- task: trivy@1
+  inputs:
+    version: 'latest'
+    docker: false
+    path: '$(Build.ArtifactStagingDirectory)/drop/StudentManagementSystem/'
+    severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
+    exitCode: '0'
+  displayName: "Trivy"
 
