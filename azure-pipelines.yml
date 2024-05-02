@@ -41,6 +41,8 @@ steps:
     command: 'publish'
     publishWebProjects: true
     zipAfterPublish: false
+    modifyOutputPath: false
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 
 
