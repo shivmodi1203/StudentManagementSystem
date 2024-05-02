@@ -37,6 +37,13 @@ steps:
     projects: '**/*.csproj'
     zipAfterPublish: false
     workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '**' # Copy all files and folders
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
