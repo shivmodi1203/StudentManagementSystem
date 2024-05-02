@@ -30,19 +30,14 @@ steps:
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
 
-# - task: PublishBuildArtifacts@1
-#   displayName: 'Publish Artifact'
-#   inputs:
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#     ArtifactName: 'drop'
-#     publishLocation: 'Container'
-- task: DotNetCoreCLI@2
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
   inputs:
-    command: 'publish'
-    publishWebProjects: true
-    zipAfterPublish: false
-    modifyOutputPath: false
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+    StoreAsTar: true
+
 
 
 
