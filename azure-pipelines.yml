@@ -1,0 +1,19 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: trivy@1
+  inputs:
+    version: 'latest'
+    docker: false
+    path: 'https://github.com/shivmodi1203/StudentManagementSystem.git'
+    severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
+    exitCode: '0'
+  displayName: "Trivy"
+
