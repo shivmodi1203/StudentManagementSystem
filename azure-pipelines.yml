@@ -59,41 +59,86 @@ steps:
   inputs:
     scriptSource: 'inline'
     script: |
+      import smtplib
       from email.mime.text import MIMEText
-      from email.mime.base import MIMEBase
       from email.mime.multipart import MIMEMultipart
+      from email.mime.base import MIMEBase
       from email import encoders
-      import smtplib, os, glob
-      import sys, json
-      import datetime
-      
-      _DEFAULT_SERVER = 'sandbox.smtp.mailtrap.io'
-      _DEFAULT_PORT = 587
-      _DEFAULT_SENDER = 'shiv.modi@eInfochipsIndia.onmicrosoft.com'
-      _DEFAULT_RECEIVER = 'shivmodi258@gmail.com'
-      dateTime = datetime.datetime.now()
-      content = "<html><head></head><body><p>Hello!<br>Please find the test execution report attached.<br></p></body></html>"
-      mailRecipients = ['trivedivedant2002@gmail.com']
-      my_email = MIMEMultipart()
-      my_email["From"] = _DEFAULT_SENDER
-      my_email["To"] = ', '.join(mailRecipients)
-      my_email["Subject"] = 'Automated Test Report -' + str(dateTime)
-      my_email.attach(MIMEText(content, 'html'))
-      
-      try:
-        report= MIMEBase('application', "octet-stream")
-        report.set_payload(open("$(System.ArtifactsDirectory)/cucumber.html", "rb").read())
-        encoders.encode_base64(report)
-        wpr.add_header('Content-Disposition', 'attachment; filename="test-report.html"')
-        my_email.attach(wpr)
-      except:
-        print("HTML report is not available in the build artifact directory")
-      
-      #my_email[“CC”] = ‘’
-      
-      smtpObj = smtplib.SMTP(_DEFAULT_SERVER, _DEFAULT_PORT)
-      print("Sending email to all stake-holders")
-      smtpObj.sendmail(_DEFAULT_SENDER, mailRecipients, my_email.as_string())
-      
-      print("Successfully sent email")
 
+      # Setup port number and server name
+
+      smtp_port = 587                 # Standard secure SMTP port
+      smtp_server = "smtp.gmail.com"  # Google SMTP Server
+
+      # Set up the email lists
+      email_from = "ralphbonner8@gmail.com"
+      email_list = ["ralphbonner8@gmail.com"]
+
+      # Define the password (better to reference externally)
+      pswd = "shivmodi@1203" # As shown in the video this password is now dead, left in as example only
+
+
+      # name the email subject
+      subject = "New email from TIE with attachments!!"
+
+
+
+      # Define the email function (dont call it email!)
+      def send_emails(email_list):
+
+          for person in email_list:
+
+              # Make the body of the email
+              body = f"""
+              line 1
+              line 2
+              line 3
+              etc
+              """
+
+              # make a MIME object to define parts of the email
+              msg = MIMEMultipart()
+              msg['From'] = email_from
+              msg['To'] = person
+              msg['Subject'] = subject
+
+              # Attach the body of the message
+              msg.attach(MIMEText(body, 'plain'))
+
+              # Define the file to attach
+              filename = "/tmp/*.json"
+
+              # Open the file in python as a binary
+              attachment= open(filename, 'rb')  # r for read and b for binary
+
+              # Encode as base 64
+              attachment_package = MIMEBase('application', 'octet-stream')
+              attachment_package.set_payload((attachment).read())
+              encoders.encode_base64(attachment_package)
+              attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename)
+              msg.attach(attachment_package)
+
+              # Cast as string
+              text = msg.as_string()
+
+              # Connect with the server
+              print("Connecting to server...")
+              TIE_server = smtplib.SMTP(smtp_server, smtp_port)
+              TIE_server.starttls()
+              TIE_server.login(email_from, pswd)
+              print("Succesfully connected to server")
+              print()
+
+
+              # Send emails to "person" as list is iterated
+              print(f"Sending email to: {person}...")
+              TIE_server.sendmail(email_from, person, text)
+              print(f"Email sent to: {person}")
+              print()
+
+          # Close the port
+          TIE_server.quit()
+
+
+      # Run the function
+      send_emails(email_list)
