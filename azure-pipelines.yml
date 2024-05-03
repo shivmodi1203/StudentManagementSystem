@@ -65,6 +65,7 @@ steps:
       from email.mime.base import MIMEBase
       from email import encoders
       import os
+      import json
       # Setup port number and server name
 
       smtp_port = 587                 # Standard secure SMTP port
