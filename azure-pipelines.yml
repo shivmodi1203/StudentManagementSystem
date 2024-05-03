@@ -42,6 +42,9 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+    
+- script: |
+    ls $(Build.ArtifactStagingDirectory)/drop/
 - task: trivy@1
   inputs:
     version: 'latest'
