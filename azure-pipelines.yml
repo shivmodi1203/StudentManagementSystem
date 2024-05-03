@@ -64,7 +64,7 @@ steps:
       from email.mime.multipart import MIMEMultipart
       from email.mime.base import MIMEBase
       from email import encoders
-
+      import os
       # Setup port number and server name
 
       smtp_port = 587                 # Standard secure SMTP port
@@ -106,7 +106,12 @@ steps:
               msg.attach(MIMEText(body, 'plain'))
 
               # Define the file to attach
-              filename = "/tmp/*.json"
+              filename = ""
+              for file in os.walk():
+                if file.startswith("trivy"):
+                  filename = str(filename)
+              print(f"filename is {filename}")
+
 
               # Open the file in python as a binary
               attachment= open(filename, 'rb')  # r for read and b for binary
