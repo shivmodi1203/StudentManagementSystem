@@ -95,5 +95,5 @@ steps:
       print("Sending email to all stake-holders")
       smtpObj.sendmail(_DEFAULT_SENDER, mailRecipients, my_email.as_string())
       
-      print(“Successfully sent email”)
+      print("Successfully sent email")
 
