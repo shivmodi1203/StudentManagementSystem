@@ -108,9 +108,9 @@ steps:
               # Define the file to attach
               filename = ""
               
-              for file in os.walk("/tmp/"):
+              for file in os.listdir("/tmp"):
                 if file.startswith("trivy"):
-                  filename = str(filename)
+                  filename = file
               print(f"filename is {filename}")
 
 
