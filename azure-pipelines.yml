@@ -77,7 +77,7 @@ steps:
       my_email = MIMEMultipart()
       my_email["From"] = _DEFAULT_SENDER
       my_email["To"] = ', '.join(mailRecipients)
-      my_email["Subject"] = 'Automated Test Report -'' + str(dateTime)
+      my_email["Subject"] = 'Automated Test Report -' + str(dateTime)
       my_email.attach(MIMEText(content, 'html'))
       
       try:
