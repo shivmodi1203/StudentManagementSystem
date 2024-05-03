@@ -153,9 +153,10 @@ steps:
     To: 'ralphbonner8@gmail.com'
     From: 'ralphbonner8@gmail.com'
     Subject: 'Trivy'
-    BodyAsHtml: false
+    BodyAsHtml: true
     AddAttachment: true
     Attachment: '/tmp/*.json'
     SmtpServer: 'smtp.gmail.com'
     SmtpUsername: 'ralphbonner8@gmail.com'
     SmtpPassword: 'jphdnjilnhregrqj'
+    UseSSL: false
