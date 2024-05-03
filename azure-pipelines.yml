@@ -49,7 +49,7 @@ steps:
   inputs:
     version: 'latest'
     docker: false
-    path: '$(Build.ArtifactStagingDirectory)/drop/StudentManagementSystem/'
+    path: '$(Build.ArtifactStagingDirectory)/StudentManagementSystem/'
     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
     exitCode: '0'
   displayName: "Trivy"
