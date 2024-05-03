@@ -1,31 +1,31 @@
 import smtplib
-      from email.mime.text import MIMEText
-      from email.mime.multipart import MIMEMultipart
-      from email.mime.base import MIMEBase
-      from email import encoders
-      import os
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
+import os
       # Setup port number and server name
 
-      smtp_port = 587                 # Standard secure SMTP port
-      smtp_server = "smtp.gmail.com"  # Google SMTP Server
+smtp_port = 587                 # Standard secure SMTP port
+smtp_server = "smtp.gmail.com"  # Google SMTP Server
 
       # Set up the email lists
-      email_from = "ralphbonner8@gmail.com"
-      email_list = ["ralphbonner8@gmail.com"]
+email_from = "ralphbonner8@gmail.com"
+email_list = ["ralphbonner8@gmail.com"]
 
       # Define the password (better to reference externally)
-      pswd = "jphd njil nhre grqj" # As shown in the video this password is now dead, left in as example only
+pswd = "jphd njil nhre grqj" # As shown in the video this password is now dead, left in as example only
 
 
       # name the email subject
-      subject = "New email from TIE with attachments!!"
+subject = "New email from TIE with attachments!!"
 
 
 
       # Define the email function (dont call it email!)
-      def send_emails(email_list):
+def send_emails(email_list):
 
-          for person in email_list:
+      for person in email_list:
 
               # Make the body of the email
               body = f"""
@@ -83,3 +83,7 @@ import smtplib
 
           # Close the port
           TIE_server.quit()
+
+
+      # Run the function
+      send_emails(email_list)
