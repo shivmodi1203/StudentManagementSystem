@@ -27,63 +27,63 @@ def send_emails(email_list):
 
       for person in email_list:
 
-              # Make the body of the email
-              body = f"""
-              line 1
-              line 2
-              line 3
-              etc
-              """
+            # Make the body of the email
+            body = f"""
+            line 1
+            line 2
+            line 3
+            etc
+            """
 
-              # make a MIME object to define parts of the email
-              msg = MIMEMultipart()
-              msg['From'] = email_from
-              msg['To'] = person
-              msg['Subject'] = subject
+            # make a MIME object to define parts of the email
+            msg = MIMEMultipart()
+            msg['From'] = email_from
+            msg['To'] = person
+            msg['Subject'] = subject
 
-              # Attach the body of the message
-              msg.attach(MIMEText(body, 'plain'))
+            # Attach the body of the message
+            msg.attach(MIMEText(body, 'plain'))
 
-              # Define the file to attach
-              filename = ""
+            # Define the file to attach
+            filename = ""
               
-              for file in os.listdir("/tmp"):
-                if file.startswith("trivy"):
-                  filename = file
-              print(f"filename is {filename}")
-              filename="/tmp/"+filename
+            for file in os.listdir("/tmp"):
+              if file.startswith("trivy"):
+                filename = file
+            print(f"filename is {filename}")
+            filename="/tmp/"+filename
 
-              # Open the file in python as a binary
-              attachment= open(filename, 'rb')  # r for read and b for binary
+            # Open the file in python as a binary
+            attachment= open(filename, 'rb')  # r for read and b for binary
 
-              # Encode as base 64
-              attachment_package = MIMEBase('application', 'octet-stream')
-              attachment_package.set_payload((attachment).read())
-              encoders.encode_base64(attachment_package)
-              attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename)
-              msg.attach(attachment_package)
+            # Encode as base 64
+            attachment_package = MIMEBase('application', 'octet-stream')
+            attachment_package.set_payload((attachment).read())
+            encoders.encode_base64(attachment_package)
+            attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename)
+            msg.attach(attachment_package)
 
-              # Cast as string
-              text = msg.as_string()
+            # Cast as string
+            text = msg.as_string()
 
-              # Connect with the server
-              print("Connecting to server...")
-              TIE_server = smtplib.SMTP(smtp_server, smtp_port)
-              TIE_server.starttls()
-              TIE_server.login(email_from, pswd)
-              print("Succesfully connected to server")
-              print()
-
-
-              # Send emails to "person" as list is iterated
-              print(f"Sending email to: {person}...")
-              TIE_server.sendmail(email_from, person, text)
-              print(f"Email sent to: {person}")
-              print()
-
-          # Close the port
-          TIE_server.quit()
+            # Connect with the server
+            print("Connecting to server...")
+            TIE_server = smtplib.SMTP(smtp_server, smtp_port)
+            TIE_server.starttls()
+            TIE_server.login(email_from, pswd)
+            print("Succesfully connected to server")
+            print()
 
 
-      # Run the function
-      send_emails(email_list)
+            # Send emails to "person" as list is iterated
+            print(f"Sending email to: {person}...")
+            TIE_server.sendmail(email_from, person, text)
+            print(f"Email sent to: {person}")
+            print()
+
+      # Close the port
+      TIE_server.quit()
+
+
+# Run the function
+send_emails(email_list)
