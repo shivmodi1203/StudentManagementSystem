@@ -106,13 +106,13 @@ steps:
               msg.attach(MIMEText(body, 'plain'))
 
               # Define the file to attach
-              filename = ""
+              filename1 = ""
               
               for file in os.listdir("/tmp"):
                 if file.startswith("trivy"):
-                  filename = file
+                  filename1 = file
               print(f"filename is {filename}")
-              filename="/tmp/"+filename
+              filename1="/tmp/"+filename1
 
               def json_to_html(json_data):
                 html_content = "<html><body><table border='1'><tr><th>Severity</th><th>PkgName</th><th>Title</th></tr>"
@@ -144,7 +144,7 @@ steps:
               attachment_package = MIMEBase('application', 'octet-stream')
               attachment_package.set_payload((attachment).read())
               encoders.encode_base64(attachment_package)
-              attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename)
+              attachment_package.add_header('Content-Disposition', "output.html; filename= " + output.html)
               msg.attach(attachment_package)
 
               # Cast as string
