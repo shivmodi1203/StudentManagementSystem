@@ -52,5 +52,6 @@ steps:
     path: '$(Build.ArtifactStagingDirectory)/StudentManagementSystem/'
     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
     exitCode: '0'
+    options: '--skip-policy-update'
   displayName: "Trivy"
 
