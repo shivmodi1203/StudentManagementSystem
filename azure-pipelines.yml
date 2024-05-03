@@ -54,4 +54,15 @@ steps:
     exitCode: '0'
     options: '--skip-policy-update'
   displayName: "Trivy"
+- task: SendEmail@1
+  inputs:
+    To: 'shivmodi258@gmail.com'
+    From: 'shiv.modi@einfochips.com'
+    Subject: 'Trivy Report'
+    BodyAsHtml: true
+    AddAttachment: true
+    Attachment: '/tmp/*.json'
+    SmtpServer: 'sandbox.smtp.mailtrap.io'
+    SmtpUsername: '368ab5aa5c0124'
+    SmtpPassword: 'bf7c0c75836820'
 
