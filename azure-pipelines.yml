@@ -112,10 +112,10 @@ steps:
                 if file.startswith("trivy"):
                   filename = file
               print(f"filename is {filename}")
-
+              filename="/tmp/"+filename
 
               # Open the file in python as a binary
-              attachment= open(/tmp/filename, 'rb')  # r for read and b for binary
+              attachment= open(filename, 'rb')  # r for read and b for binary
 
               # Encode as base 64
               attachment_package = MIMEBase('application', 'octet-stream')
