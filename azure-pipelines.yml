@@ -44,7 +44,7 @@ steps:
     publishLocation: 'Container'
     
 - script: |
-    ls $(Build.ArtifactStagingDirectory)/drop/
+    ls $(Build.ArtifactStagingDirectory)
 - task: trivy@1
   inputs:
     version: 'latest'
