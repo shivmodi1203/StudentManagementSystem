@@ -46,7 +46,7 @@ steps:
   inputs:
     version: 'latest'
     docker: false
-    path: '$(Build.ArtifactStagingDirectory)/drop/StudentManagementSystem/*.json'
+    path: '$(Build.ArtifactStagingDirectory)/drop/StudentManagementSystem/'
     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
     exitCode: '0'
   displayName: "Trivy"
