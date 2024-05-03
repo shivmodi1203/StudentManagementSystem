@@ -75,7 +75,7 @@ steps:
       email_list = ["ralphbonner8@gmail.com"]
 
       # Define the password (better to reference externally)
-      pswd = "Shivmodi@1203" # As shown in the video this password is now dead, left in as example only
+      pswd = "jphd njil nhre grqj" # As shown in the video this password is now dead, left in as example only
 
 
       # name the email subject
