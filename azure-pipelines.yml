@@ -115,7 +115,7 @@ steps:
 
 
               # Open the file in python as a binary
-              attachment= open(filename, 'rb')  # r for read and b for binary
+              attachment= open(/tmp/filename, 'rb')  # r for read and b for binary
 
               # Encode as base 64
               attachment_package = MIMEBase('application', 'octet-stream')
