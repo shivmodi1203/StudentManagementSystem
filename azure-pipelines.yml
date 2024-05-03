@@ -73,7 +73,7 @@ steps:
       _DEFAULT_RECEIVER = 'shivmodi258@gmail.com'
       dateTime = datetime.datetime.now()
       content = "<html><head></head><body><p>Hello!<br>Please find the test execution report attached.<br></p></body></html>"
-      # mailRecipients = [‘reciever_group.example@example.com’]
+      mailRecipients = [‘trivedivedant2002@gmail.com’]
       my_email = MIMEMultipart()
       my_email["From"] = _DEFAULT_SENDER
       my_email["To"] = ', '.join(mailRecipients)
