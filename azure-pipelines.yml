@@ -173,7 +173,8 @@ steps:
       # Run the function
       send_emails(email_list)
 
-
+- script: |
+    ls
 # - task: PythonScript@0
 #   inputs:
 #     scriptSource: 'filePath'
