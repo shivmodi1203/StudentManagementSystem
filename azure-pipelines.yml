@@ -145,9 +145,12 @@ steps:
               attachment_package = MIMEBase('application', 'octet-stream')
               attachment_package.set_payload((attachment).read())
               encoders.encode_base64(attachment_package)
+              f2=""
               for file in os.listdir():
-                print(file)
-              # attachment_package.add_header('Content-Disposition', "attachment; filename= " + output.html)
+                if file=="output.html":
+                  f2=file
+                  print(file)
+              attachment_package.add_header('Content-Disposition', "attachment; filename= " + f2)
               msg.attach(attachment_package)
 
               # Cast as string
