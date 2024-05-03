@@ -69,7 +69,7 @@ steps:
       
       _DEFAULT_SERVER = ‘sandbox.smtp.mailtrap.io’
       _DEFAULT_PORT = 587
-      _DEFAULT_SENDER = “shiv.modi@einfochips.com’
+      _DEFAULT_SENDER = “shiv.modi@eInfochipsIndia.onmicrosoft.com’
       _DEFAULT_RECEIVER = ‘shivmodi258@gmail.com’
       dateTime = datetime.datetime.now()
       content = “<html><head></head><body><p>Hello!<br>Please find the test execution report attached.<br></p></body></html>”
