@@ -65,7 +65,7 @@ def send_emails(email_list):
                         html_file.write(html_content)
                   print(f"HTML file '{filename}' has been created successfully.")
                   
-            with open(filename1, "r") as json_file:
+            with open(filename1, "rb") as json_file:
                   json_data = json.load(json_file)
     
             # print(json_data)
