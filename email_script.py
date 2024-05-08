@@ -55,22 +55,22 @@ def send_emails(email_list):
       filename1="/tmp/"+filename1
       # print(f"filename is {filename1}")
 
-      # def json_to_html(json_data):
-      #   html_content = "<html><body><table border='1'><tr><th>Severity</th><th>PkgName</th><th>Title</th></tr>"
-      #   for result in json_data.get("Results", []):
-      #       for vulnerability in result.get("Vulnerabilities", []):
-      #           html_content += f"<tr><td>{vulnerability['Severity']}</td><td>{vulnerability['PkgName']}</td><td>{vulnerability['Title']}</td></tr>"
-      #   html_content += "</table></body></html>"
-      #   return html_content
+      def json_to_html(json_data):
+        html_content = "<html><body><table border='1'><tr><th>Severity</th><th>PkgName</th><th>Title</th></tr>"
+        for result in json_data.get("Results", []):
+            for vulnerability in result.get("Vulnerabilities", []):
+                html_content += f"<tr><td>{vulnerability['Severity']}</td><td>{vulnerability['PkgName']}</td><td>{vulnerability['Title']}</td></tr>"
+        html_content += "</table></body></html>"
+        return html_content
 
-      # def write_html_file(html_content, filename):
-      #     with open(filename, "w") as html_file:
-      #         html_file.write(html_content)
-      #     print(f"HTML file '{filename}' has been created successfully.")
+      def write_html_file(html_content, filename):
+          with open(filename, "w") as html_file:
+              html_file.write(html_content)
+          print(f"HTML file '{filename}' has been created successfully.")
           
       # try:
-      #       with open(filename1, "r") as json_file:
-      #             json_data = json.load(json_file)
+      with open(filename1, "r") as json_file:
+            json_data = json.load(json_file)
       # except json.JSONDecodeError as e:
       #       print("Error decoding JSON:", e)
       #       json_data = None
