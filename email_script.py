@@ -77,10 +77,10 @@ def send_emails(email_list):
     
       # print(json_data)
 
-      # html_content = json_to_html(json_data)
+      html_content = json_to_html(json_data)
 
       # # Write HTML to file
-      # write_html_file(html_content, "output.html")
+      write_html_file(html_content, "output.html")
 
       # Open the file in python as a binary
       attachment= open(filename1, 'rb')  # r for read and b for binary
