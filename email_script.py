@@ -69,18 +69,18 @@ def send_emails(email_list):
           print(f"HTML file '{filename}' has been created successfully.")
           
       # try:
-      with open(filename1, "r") as json_file:
-            json_data = json.load(json_file)
+      # with open(filename1, "r") as json_file:
+      #       json_data = json.load(json_file)
       # except json.JSONDecodeError as e:
       #       print("Error decoding JSON:", e)
       #       json_data = None
     
       # print(json_data)
 
-      html_content = json_to_html(json_data)
+      # html_content = json_to_html(json_data)
 
       # # Write HTML to file
-      write_html_file(html_content, "output.html")
+      # write_html_file(html_content, "output.html")
 
       # Open the file in python as a binary
       attachment= open(filename1, 'rb')  # r for read and b for binary
