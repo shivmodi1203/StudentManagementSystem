@@ -47,8 +47,8 @@ def send_emails(email_list):
             filename1 = ""
               
             for file in os.listdir("/tmp"):
-                  if file.startswith("trivy"):
-                        filename1 = file
+              if file.startswith("trivy"):
+                filename1 = file
             print(f"filename is {filename1}")
             filename1="/tmp/"+filename1
 
