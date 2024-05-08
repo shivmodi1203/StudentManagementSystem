@@ -11,11 +11,11 @@ smtp_port = 587                 # Standard secure SMTP port
 smtp_server = "smtp.gmail.com"  # Google SMTP Server
 
 # Set up the email lists
-email_from = "ralphbonner8@gmail.com"
-email_list = ["ralphbonner8@gmail.com"]
+email_from = ""
+email_list = [""]
 
 # Define the password (better to reference externally)
-pswd = "jphd njil nhre grqj" # As shown in the video this password is now dead, left in as example only
+pswd = "" # As shown in the video this password is now dead, left in as example only
 
 
 # name the email subject
@@ -52,42 +52,42 @@ def send_emails(email_list):
             print(f"filename is {filename1}")
             filename1="/tmp/"+filename1
 
-            # def json_to_html(json_data):
-            #       html_content = "<html><body><table border='1'><tr><th>Severity</th><th>PkgName</th><th>Title</th></tr>"
-            #       for result in json_data.get("Results", []):
-            #             for vulnerability in result.get("Vulnerabilities", []):
-            #                   html_content += f"<tr><td>{vulnerability['Severity']}</td><td>{vulnerability['PkgName']}</td><td>{vulnerability['Title']}</td></tr>"
-            #       html_content += "</table></body></html>"
-            #       return html_content
+            def json_to_html(json_data):
+                  html_content = "<html><body><table border='1'><tr><th>Severity</th><th>PkgName</th><th>Title</th></tr>"
+                  for result in json_data.get("Results", []):
+                        for vulnerability in result.get("Vulnerabilities", []):
+                              html_content += f"<tr><td>{vulnerability['Severity']}</td><td>{vulnerability['PkgName']}</td><td>{vulnerability['Title']}</td></tr>"
+                  html_content += "</table></body></html>"
+                  return html_content
 
-            # def write_html_file(html_content, filename):
-            #       with open(filename, "w") as html_file:
-            #             html_file.write(html_content)
-            #       print(f"HTML file '{filename}' has been created successfully.")
+            def write_html_file(html_content, filename):
+                  with open(filename, "w") as html_file:
+                        html_file.write(html_content)
+                  print(f"HTML file '{filename}' has been created successfully.")
                   
-            # with open(filename1, "r") as json_file:
-            #       json_data = json.load(json_file)
+            with open(filename1, "r") as json_file:
+                  json_data = json.load(json_file)
     
             # print(json_data)
 
-            # html_content = json_to_html(json_data)
+            html_content = json_to_html(json_data)
 
             # # Write HTML to file
-            # write_html_file(html_content, "output.html")
+            write_html_file(html_content, "output.html")
 
             # Open the file in python as a binary
-            attachment= open(filename1, 'rb')  # r for read and b for binary
+            attachment= open("output.html", 'rb')  # r for read and b for binary
 
             # Encode as base 64
             attachment_package = MIMEBase('application', 'octet-stream')
             attachment_package.set_payload((attachment).read())
             encoders.encode_base64(attachment_package)
-            # f2=""
-            # for file in os.listdir():
-            #       if file=="result.html":
-            #             f2=file
-            #             print(file)
-            attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename1)
+            f2=""
+            for file in os.listdir():
+                  if file=="output.html":
+                        f2=file
+                        print(file)
+            attachment_package.add_header('Content-Disposition', "attachment; filename= " + f2)
             msg.attach(attachment_package)
 
             # Cast as string
