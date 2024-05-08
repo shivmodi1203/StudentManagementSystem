@@ -46,7 +46,7 @@ def send_emails(email_list):
             # Define the file to attach
             filename1 = ""
               
-            for file in os.listdir("tmp"):
+            for file in os.listdir("/tmp"):
                   if file.startswith("res1"):
                         filename1 = file
                         print(f"filename is {file}")
