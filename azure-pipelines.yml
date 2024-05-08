@@ -52,7 +52,7 @@ steps:
     path: '$(Build.ArtifactStagingDirectory)/StudentManagementSystem/'
     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
     exitCode: '0'
-    options: '--skip-policy-update --format template'
+    options: '--skip-policy-update'
   displayName: "Trivy"
 - task: PythonScript@0
   inputs:
