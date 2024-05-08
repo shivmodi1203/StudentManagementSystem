@@ -52,7 +52,7 @@ steps:
     path: '$(Build.ArtifactStagingDirectory)/StudentManagementSystem/'
     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
     exitCode: '0'
-    options: '--skip-policy-update --format template --template "@/$(System.DefaultWorkingDirectory)/html.tpl" --output relust.html'
+    options: '--skip-policy-update --format template --template "@/home/vsts/work/1/s/html.tpl" --output relust.html'
   displayName: "Trivy"
 - task: PythonScript@0
   inputs:
