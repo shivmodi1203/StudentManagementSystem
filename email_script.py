@@ -46,10 +46,10 @@ def send_emails(email_list):
             # Define the file to attach
             filename1 = ""
               
-            for file in os.listdir("/tmp"):
-              if file.startswith("trivy"):
-                filename1 = file
-            print(f"filename is {filename1}")
+            for file in os.listdir("tmp"):
+                  if file.startswith("res1"):
+                        filename1 = file
+                        print(f"filename is {file}")
             filename1="/tmp/"+filename1
 
             def json_to_html(json_data):
@@ -65,10 +65,10 @@ def send_emails(email_list):
                         html_file.write(html_content)
                   print(f"HTML file '{filename}' has been created successfully.")
                   
-            with open(filename1, "rb") as json_file:
+            with open(filename1, "r") as json_file:
                   json_data = json.load(json_file)
     
-            # print(json_data)
+            print(json_data)
 
             html_content = json_to_html(json_data)
 
