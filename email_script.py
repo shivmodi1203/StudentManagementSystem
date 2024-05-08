@@ -52,7 +52,7 @@ def send_emails(email_list):
         if file.startswith("trivy"):
           filename1 = file
       print(f"filename is {filename1}")
-      # filename1="/tmp/"+filename1
+      filename1="/tmp/"+filename1
       # print(f"filename is {filename1}")
 
       # def json_to_html(json_data):
