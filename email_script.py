@@ -89,11 +89,11 @@ def send_emails(email_list):
       attachment_package = MIMEBase('application', 'octet-stream')
       attachment_package.set_payload((attachment).read())
       encoders.encode_base64(attachment_package)
-      # f2=""
-      # for file in os.listdir():
-      #   if file=="output.html":
-      #     f2=file
-      #     print(file)
+      f2=""
+      for file in os.listdir():
+        if file=="output.html":
+          f2=file
+          print(file)
       attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename1)
       msg.attach(attachment_package)
 
