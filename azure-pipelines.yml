@@ -52,10 +52,10 @@ steps:
     path: '$(Build.ArtifactStagingDirectory)/StudentManagementSystem/'
     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
     exitCode: '0'
-    options: '--skip-policy-update'
+    options: '--skip-policy-update --formet html'
   displayName: "Trivy"
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'filePath'
-    scriptPath: '$(System.DefaultWorkingDirectory)/email_script.py'
+# - task: PythonScript@0
+#   inputs:
+#     scriptSource: 'filePath'
+#     scriptPath: '$(System.DefaultWorkingDirectory)/email_script.py'
 
