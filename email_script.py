@@ -69,8 +69,8 @@ def send_emails(email_list):
           print(f"HTML file '{filename}' has been created successfully.")
           
       # try:
-      # with open(filename1, "r") as json_file:
-      #       json_data = json.load(json_file)
+      with open(filename1, "r") as json_file:
+            json_data = json.load(json_file)
       # except json.JSONDecodeError as e:
       #       print("Error decoding JSON:", e)
       #       json_data = None
