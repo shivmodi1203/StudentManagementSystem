@@ -49,27 +49,27 @@ def send_emails(email_list):
       filename1 = ""
       
       for file in os.listdir("/tmp"):
-        if file.startswith("trivy"):
-          filename1 = file
+            if file.startswith("trivy"):
+                  filename1 = file
       print(f"filename is {filename1}")
       filename1="/tmp/"+filename1
-      # print(f"filename is {filename1}")
+      print(f"filename is {filename1}")
 
       def json_to_html(json_data):
-        html_content = "<html><body><table border='1'><tr><th>Severity</th><th>PkgName</th><th>Title</th></tr>"
-        for result in json_data.get("Results", []):
-            for vulnerability in result.get("Vulnerabilities", []):
-                html_content += f"<tr><td>{vulnerability['Severity']}</td><td>{vulnerability['PkgName']}</td><td>{vulnerability['Title']}</td></tr>"
-        html_content += "</table></body></html>"
-        return html_content
+            html_content = "<html><body><table border='1'><tr><th>Severity</th><th>PkgName</th><th>Title</th></tr>"
+            for result in json_data.get("Results", []):
+                  for vulnerability in result.get("Vulnerabilities", []):
+                        html_content += f"<tr><td>{vulnerability['Severity']}</td><td>{vulnerability['PkgName']}</td><td>{vulnerability['Title']}</td></tr>"
+            html_content += "</table></body></html>"
+            return html_content
 
       def write_html_file(html_content, filename):
-          with open(filename, "w") as html_file:
-              html_file.write(html_content)
-          print(f"HTML file '{filename}' has been created successfully.")
+            with open(filename, "w") as html_file:
+                  html_file.write(html_content)
+            print(f"HTML file '{filename}' has been created successfully.")
           
       # try:
-      with open(filename1, "r", encoding="utf-8") as json_file:
+      with open(filename1, "r") as json_file:
             json_data = json.load(json_file)
       # except json.JSONDecodeError as e:
       #       print("Error decoding JSON:", e)
@@ -77,10 +77,10 @@ def send_emails(email_list):
     
       # print(json_data)
 
-      # html_content = json_to_html(json_data)
+      html_content = json_to_html(json_data)
 
       # # Write HTML to file
-      # write_html_file(html_content, "output.html")
+      write_html_file(html_content, "output.html")
 
       # Open the file in python as a binary
       attachment= open(filename1, 'rb')  # r for read and b for binary
