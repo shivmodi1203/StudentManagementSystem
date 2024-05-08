@@ -94,7 +94,7 @@ def send_emails(email_list):
         if file=="output.html":
           f2=file
           print(file)
-      attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename1)
+      attachment_package.add_header('Content-Disposition', "attachment; filename= " + f2)
       msg.attach(attachment_package)
 
       # Cast as string
