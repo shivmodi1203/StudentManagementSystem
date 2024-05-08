@@ -76,18 +76,18 @@ def send_emails(email_list):
             # write_html_file(html_content, "output.html")
 
             # Open the file in python as a binary
-            attachment= open("result.html", 'rb')  # r for read and b for binary
+            attachment= open(filename1, 'rb')  # r for read and b for binary
 
             # Encode as base 64
             attachment_package = MIMEBase('application', 'octet-stream')
             attachment_package.set_payload((attachment).read())
             encoders.encode_base64(attachment_package)
-            f2=""
-            for file in os.listdir():
-                  if file=="result.html":
-                        f2=file
-                        print(file)
-            attachment_package.add_header('Content-Disposition', "attachment; filename= " + f2)
+            # f2=""
+            # for file in os.listdir():
+            #       if file=="result.html":
+            #             f2=file
+            #             print(file)
+            attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename1)
             msg.attach(attachment_package)
 
             # Cast as string
