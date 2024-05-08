@@ -53,6 +53,7 @@ def send_emails(email_list):
           filename1 = file
       print(f"filename is {filename1}")
       filename1="/tmp/"+filename1
+      print(f"filename is {filename1}")
 
       def json_to_html(json_data):
         html_content = "<html><body><table border='1'><tr><th>Severity</th><th>PkgName</th><th>Title</th></tr>"
@@ -67,10 +68,14 @@ def send_emails(email_list):
               html_file.write(html_content)
           print(f"HTML file '{filename}' has been created successfully.")
           
-      with open(filename1, "r") as json_file:
-          json_data = json.load(json_file)
+      try:
+            with open(filename1, "r") as json_file:
+                  json_data = json.load(json_file)
+      except json.JSONDecodeError as e:
+            print("Error decoding JSON:", e)
+            json_data = None
     
-      # print(json_data)
+      print(json_data)
 
       html_content = json_to_html(json_data)
 
