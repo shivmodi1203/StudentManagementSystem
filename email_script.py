@@ -7,15 +7,15 @@ import os
 import json
 # Setup port number and server name
 
-smtp_port = 587                 # Standard secure SMTP port
+smtp_port = 587                 # Standard secure SMTP port 
 smtp_server = "smtp.gmail.com"  # Google SMTP Server
 
 # Set up the email lists
-email_from = "ralphbonner8@gmail.com"
-email_list = ["ralphbonner8@gmail.com"]
+email_from = ""
+email_list = [""]
 
 # Define the password (better to reference externally)
-pswd = "jphd njil nhre grqj" # As shown in the video this password is now dead, left in as example only
+pswd = "" # As shown in the video this password is now dead, left in as example only
 
 
 # name the email subject
