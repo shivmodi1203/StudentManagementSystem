@@ -5,7 +5,8 @@
 
 trigger: none
 
-pool: default
+pool: 
+  vmImages: ubuntu-latest
 
 steps:
 # - task: DotNetCoreCLI@2 
