@@ -17,9 +17,9 @@ steps:
 
 - task: SonarQubePrepare@5
   inputs:
-    SonarQube: 'sonarqube'
+    SonarQube: 'sonar'
     scannerMode: 'MSBuild'
-    projectKey: 'shiv-_Test_shiv-_Test_a4655216-f086-4e9e-8e88-524f27430e54'
+    projectKey: 'shiv-_Test_shiv-_Test_fc00f397-6d3b-4a9c-b7fd-cc849db08a71'
     projectName: '.NET-Project'
 
 - task: DotNetCoreCLI@2
@@ -38,7 +38,7 @@ steps:
 
 - task: SonarQubeAnalyze@5
   inputs:
-    jdkversion: 'JAVA_HOME'
+    jdkversion: 'JAVA_HOME_11_X64'
 
 - task: SonarQubePublish@5
   inputs:
