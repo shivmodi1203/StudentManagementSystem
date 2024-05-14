@@ -35,7 +35,7 @@ steps:
     projects: '**/*.csproj'
 - task: JavaToolInstaller@0
   inputs:
-    versionSpec: '22'
+    versionSpec: '21'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
