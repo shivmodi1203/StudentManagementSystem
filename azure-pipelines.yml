@@ -39,9 +39,9 @@ steps:
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
-- task: SonarQubeAnalyze@5
-  inputs:
-    jdkversion: 'JAVA_HOME'
+# - task: SonarQubeAnalyze@5
+#   inputs:
+#     jdkversion: 'JAVA_HOME'
 
 - task: SonarQubePublish@5
   inputs:
