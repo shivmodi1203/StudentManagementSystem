@@ -31,11 +31,14 @@ steps:
   inputs:
     versionSpec: '11'
     jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
+    jdkSourceOption: 'LocalDirectory'
+    jdkFile: '/usr/lib/jvm/java-1.11.0-openjdk-amd64/bin/java'
+    jdkDestinationDirectory: '/home/einfochips/myagent/_work/9/s/'
+    cleanDestinationDirectory: true
 
 - task: SonarQubeAnalyze@5
   inputs:
-    jdkversion: 'JAVA_HOME'
+    jdkversion: 'JAVA_HOME_11_X64'
 
 - task: SonarQubePublish@5
   inputs:
