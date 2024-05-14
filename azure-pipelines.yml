@@ -1,0 +1,62 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: DotNetCoreCLI@2 
+  displayName: Restore
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: Pack
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'off'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: false
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+    
+- script: |
+    ls $(System.DefaultWorkingDirectory)
+
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'sonarqube'
+    scannerMode: 'CLI'
+    configMode: 'file'
+# - task: trivy@1
+#   inputs:
+#     version: 'latest'
+#     docker: false
+#     path: '$(Build.ArtifactStagingDirectory)/StudentManagementSystem/'
+#     severities: 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN'
+#     exitCode: '0'
+#     options: '--skip-policy-update'
+#   displayName: "Trivy"
