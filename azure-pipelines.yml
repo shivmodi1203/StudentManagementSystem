@@ -27,6 +27,11 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
 
 - task: SonarQubeAnalyze@5
   inputs:
