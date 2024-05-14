@@ -6,7 +6,7 @@
 trigger: none
 
 pool: 
-  vmImages: ubuntu-latest
+  vmImage: ubuntu-latest
 
 steps:
 # - task: DotNetCoreCLI@2 
