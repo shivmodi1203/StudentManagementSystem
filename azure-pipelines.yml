@@ -22,7 +22,7 @@ steps:
 #     jdkSourceOption: 'PreInstalled'
 
 - script: |
-    pwd
+    pwd; ls
 
 
 # - script: |
