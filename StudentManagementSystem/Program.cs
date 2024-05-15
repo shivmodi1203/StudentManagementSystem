@@ -7,7 +7,7 @@ using Microsoft.VisualBasic;
 
 using Microsoft.Data.SqlClient;
 
-internal class static Program
+internal static class Program
 {
     // Database connection string
     private static readonly string connectionString = "Data Source=localhost,51609;Initial Catalog=StudentManagementSystem;Integrated Security=True;Encrypt=False";
