@@ -18,11 +18,9 @@ steps:
 - task: SonarQubePrepare@5
   inputs:
     SonarQube: 'sonar_local'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'shiv-_Test_shiv-_Test_a4655216-f086-4e9e-8e88-524f27430e54'
-    cliProjectName: '.NET-Project'
-    cliSources: '.'
+    scannerMode: 'MSBuild'
+    projectKey: 'shiv-_Test_shiv-_Test_a4655216-f086-4e9e-8e88-524f27430e54'
+    projectName: '.NET-Project'
     extraProperties: 'sonar.verbose=true'
 
 - task: DotNetCoreCLI@2
