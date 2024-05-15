@@ -25,12 +25,15 @@ steps:
     projectName: 'myProject'
     
 - script: |
+    dotnet tool install --global dotnet-sonarscanner
     dotnet sonarscanner begin /o:studentmanagementsystem /k:studentmanagementsystem_shiv /d:sonar.host.url=https://sonarcloud.io
-- task: DotNetCoreCLI@2
-  displayName: Build
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
+    dotnet build
+
+# - task: DotNetCoreCLI@2
+#   displayName: Build
+#   inputs:
+#     command: 'build'
+#     projects: '**/*.csproj'
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '17'
