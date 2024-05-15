@@ -28,14 +28,14 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '17'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'LocalDirectory'
-    jdkFile: '/home/einfochips/Downloads/openjdk-17_linux-x64_bin.tar.gz'
-    jdkDestinationDirectory: '/home/einfochips/myagent/_work/9/s/'
-    cleanDestinationDirectory: false
+# - task: JavaToolInstaller@0
+#   inputs:
+#     versionSpec: '17'
+#     jdkArchitectureOption: 'x64'
+#     jdkSourceOption: 'LocalDirectory'
+#     jdkFile: '/home/einfochips/Downloads/openjdk-17_linux-x64_bin.tar.gz'
+#     jdkDestinationDirectory: '/home/einfochips/myagent/_work/9/s/'
+#     cleanDestinationDirectory: false
 
 - task: SonarQubeAnalyze@5
   inputs:
