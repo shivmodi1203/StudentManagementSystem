@@ -21,6 +21,8 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'shiv-_Test_shiv-_Test_a4655216-f086-4e9e-8e88-524f27430e54'
     projectName: '.NET-Project'
+    extraProperties: |
+      sonar.verbose=true
 
 - task: DotNetCoreCLI@2
   displayName: Build
