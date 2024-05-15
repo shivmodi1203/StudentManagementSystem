@@ -1,125 +1,0 @@
-
-LProgram.CalculateAndSetGPA(Microsoft.Data.SqlClient.SqlConnection, int, int)k
-_/home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.csî î(*"0*
-0
-î î(*
-1*‚
-1
-ğ ù(P^\
-
-ğ ù(P)
-%0#Microsoft.Data.SqlClient.SqlCommand"#Microsoft.Data.SqlClient.SqlCommandš
-—
-
-ğ ù(P)
-%1#Microsoft.Data.SqlClient.SqlCommand"^Microsoft.Data.SqlClient.SqlCommand.SqlCommand(string, Microsoft.Data.SqlClient.SqlConnection)*9
-
-ğ ù(P+
-)
-%0#Microsoft.Data.SqlClient.SqlCommand*ü
-
-ğ# ù(Cíê
-çUPDATE Enrollment SET Grade = CASE WHEN Grade >= 80 THEN 4.0 WHEN Grade >= 70 THEN 3.5 WHEN Grade >= 60 THEN 3.0 WHEN Grade >= 50 THEN 2.5 WHEN Grade >= 40 THEN 2.0 ELSE 0.0 END WHERE StudentID = @StudentID AND CourseID = @CourseID*D
-
-ùE ù(O6
-4
-
-connection&Microsoft.Data.SqlClient.SqlConnectiono
-m
-
-ğ ù(P*
-cmd#Microsoft.Data.SqlClient.SqlCommand"__id*-+
-)
-%0#Microsoft.Data.SqlClient.SqlCommand*
-2*Ã
-2
-ú ü(¶
-³
-
-ú ú(5
-%2/Microsoft.Data.SqlClient.SqlParameterCollection"2Microsoft.Data.SqlClient.SqlCommand.Parameters.get*:
-
-ú ú(,
-*
-cmd#Microsoft.Data.SqlClient.SqlCommand‹
-ˆ
-
-ú ú(<+
-%3%Microsoft.Data.SqlClient.SqlParameter"FSystem.Collections.Generic.ICollection<T>.AddWithValue(string, object)*E
-
-ú ú(7
-5
-%2/Microsoft.Data.SqlClient.SqlParameterCollection*
-
-ú$ ú(0
-
-@StudentID* 
-
-ú2 ú(;
-
-	studentIDint¶
-³
-
-û û(5
-%4/Microsoft.Data.SqlClient.SqlParameterCollection"2Microsoft.Data.SqlClient.SqlCommand.Parameters.get*:
-
-û û(,
-*
-cmd#Microsoft.Data.SqlClient.SqlCommand‰
-†
-
-û û(:+
-%5%Microsoft.Data.SqlClient.SqlParameter"FSystem.Collections.Generic.ICollection<T>.AddWithValue(string, object)*E
-
-û û(7
-5
-%4/Microsoft.Data.SqlClient.SqlParameterCollection*
-
-û$ û(/
-	@CourseID*
-
-û1 û(9
-
-courseIDint 
-
-ü ü(	
-%6int"5Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()*:
-
-ü ü(,
-*
-cmd#Microsoft.Data.SqlClient.SqlCommand2ExecuteNonQuery()*
-3*
-3
-ğ ù(P*
-4
-5*•
-4
-ğ ù(P}
-
-ğ ù(P
-
-%7void"System.IDisposable.Dispose()*:
-
-ğ ù(P,
-*
-cmd#Microsoft.Data.SqlClient.SqlCommand2	Dispose()*
-5*
-5
-î î(*
-6*2
-6
-ı ı("!
-
-ı ı(
-implicit return:B
-
-î+ î(C4
-
-connection&Microsoft.Data.SqlClient.SqlConnection:
-
-îE î(R
-	studentIDint:
-
-îT î(`
-courseIDintB"	
-ProgramX
