@@ -5,72 +5,55 @@
 
 trigger: none
 
-pool: 
-  vmImage: ubuntu-latest
+pool: default
+
+variables:
+- group: myVaribales
+- name: sonarVar
+  value: '$(SONAR_TOKEN)'
 
 steps:
-# - task: DotNetCoreCLI@2 
-#   displayName: Restore
-#   inputs:
-#     command: 'restore'
-#     projects: '**/*.csproj'
-#     feedsToUse: 'select'
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'sonar_cloud_token'
-    organization: 'studentmanagementsystem'
-    scannerMode: 'MSBuild'
-    projectKey: 'studentmanagementsystem_shiv'
-    projectName: 'myProject'
-    
-- script: |
-    dotnet tool install --global dotnet-sonarscanner
-    dotnet sonarscanner begin /o:studentmanagementsystem /k:studentmanagementsystem_shiv /d:sonar.host.url=https://sonarcloud.io
-    dotnet build
-
-# - task: DotNetCoreCLI@2
-#   displayName: Build
-#   inputs:
-#     command: 'build'
-#     projects: '**/*.csproj'
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '17'
     jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
+    jdkSourceOption: 'LocalDirectory'
+    jdkFile: '/home/einfochips/Downloads/openjdk-17_linux-x64_bin.tar.gz'
+    jdkDestinationDirectory: '/home/einfochips/myagent/_work/9/s'
+    cleanDestinationDirectory: false
+
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      dotnet tool install --global dotnet-sonarscanner
+      export SONAR_TOKEN=$(sonarVar)
+      dotnet sonarscanner begin /o:studentmanagementsystem /k:studentmanagementsystem_shiv /d:sonar.host.url=https://sonarcloud.io
+      dotnet build
+      dotnet sonarscanner end
+    workingDirectory: '.'
+
+# - task: SonarCloudPrepare@1
+#   inputs:
+#     SonarCloud: 'sonar_cloud_token'
+#     organization: 'studentmanagementsystem'
+#     scannerMode: 'CLI'
+#     configMode: 'manual'
+#     cliProjectKey: 'studentmanagementsystem_shiv'
+#     cliProjectName: 'studentmanagementsystem'
+#     cliSources: '.'
+
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'build'
+#     projects: '**/*.csproj'
+
 # - task: SonarCloudAnalyze@1
 #   inputs:
 #     jdkversion: 'JAVA_HOME_17_X64'
-
+    
 # - task: SonarCloudPublish@1
 #   inputs:
 #     pollingTimeoutSec: '300'
-- script: |
-    dotnet sonarscanner end
-
-# - task: DotNetCoreCLI@2
-#   displayName: Pack
-#   inputs:
-#     command: 'pack'
-#     packagesToPack: '**/*.csproj'
-#     versioningScheme: 'off'
-
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'publish'
-#     publishWebProjects: false
-#     projects: '**/*.csproj'
-#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-#     zipAfterPublish: false
-# - task: PublishBuildArtifacts@1
-#   displayName: 'Publish Artifact'
-#   inputs:
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#     ArtifactName: 'drop'
-#     publishLocation: 'Container'
-    
-# - script: |
-#     ls $(System.DefaultWorkingDirectory)
-
-
