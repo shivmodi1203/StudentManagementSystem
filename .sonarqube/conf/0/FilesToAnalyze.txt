@@ -1,0 +1,1 @@
+﻿/home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs

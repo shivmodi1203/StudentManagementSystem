@@ -1,0 +1,445 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.7.0.0",
+        "fileVersion": "4.7.0-3.23517.17 (9d4cc030)",
+        "semanticVersion": "4.7.0",
+        "language": "en-IN"
+      },
+      "results": [
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 16,
+                  "endLine": 10,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3903",
+          "level": "warning",
+          "message": "Move 'Program' into a named namespace.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 16,
+                  "endLine": 10,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal '@StudentID' 8 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 106,
+                  "startColumn": 41,
+                  "endLine": 106,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 183,
+                  "startColumn": 41,
+                  "endLine": 183,
+                  "endColumn": 53
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 216,
+                  "startColumn": 41,
+                  "endLine": 216,
+                  "endColumn": 53
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 269,
+                  "startColumn": 41,
+                  "endLine": 269,
+                  "endColumn": 53
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 304,
+                  "startColumn": 37,
+                  "endLine": 304,
+                  "endColumn": 49
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 339,
+                  "startColumn": 41,
+                  "endLine": 339,
+                  "endColumn": 53
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 378,
+                  "startColumn": 37,
+                  "endLine": 378,
+                  "endColumn": 49
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 402,
+                  "startColumn": 41,
+                  "endLine": 402,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal '@DepartmentID' 4 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 41,
+                  "endLine": 110,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 187,
+                  "startColumn": 41,
+                  "endLine": 187,
+                  "endColumn": 56
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 491,
+                  "startColumn": 41,
+                  "endLine": 491,
+                  "endColumn": 56
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 562,
+                  "startColumn": 41,
+                  "endLine": 562,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'Press any key to continue...' 9 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 27,
+                  "endLine": 123,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 152,
+                  "startColumn": 27,
+                  "endLine": 152,
+                  "endColumn": 57
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 200,
+                  "startColumn": 27,
+                  "endLine": 200,
+                  "endColumn": 57
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 229,
+                  "startColumn": 27,
+                  "endLine": 229,
+                  "endColumn": 57
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 287,
+                  "startColumn": 27,
+                  "endLine": 287,
+                  "endColumn": 57
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 356,
+                  "startColumn": 27,
+                  "endLine": 356,
+                  "endColumn": 57
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 424,
+                  "startColumn": 27,
+                  "endLine": 424,
+                  "endColumn": 57
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 504,
+                  "startColumn": 27,
+                  "endLine": 504,
+                  "endColumn": 57
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 576,
+                  "startColumn": 27,
+                  "endLine": 576,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal '@CourseID' 5 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 270,
+                  "startColumn": 41,
+                  "endLine": 270,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 316,
+                  "startColumn": 37,
+                  "endLine": 316,
+                  "endColumn": 48
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 340,
+                  "startColumn": 41,
+                  "endLine": 340,
+                  "endColumn": 52
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 379,
+                  "startColumn": 37,
+                  "endLine": 379,
+                  "endColumn": 48
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///home/einfochips/Downloads/Repo/task/StudentManagementSystem/StudentManagementSystem/Program.cs",
+                "region": {
+                  "startLine": 489,
+                  "startColumn": 41,
+                  "endLine": 489,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "S1118": {
+          "id": "S1118",
+          "shortDescription": "Utility classes should not have public constructors",
+          "fullDescription": "Whenever there are portions of code that are duplicated and do not depend on the state of their container class, they can be centralized inside a \"utility class\". A utility class is a class that only has static members, hence it should not be instantiated.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1192": {
+          "id": "S1192",
+          "shortDescription": "String literals should not be duplicated",
+          "fullDescription": "Duplicated string literals make the process of refactoring complex and error-prone, as any change would need to be propagated on all occurrences.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1192",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": false,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3903": {
+          "id": "S3903",
+          "shortDescription": "Types should be defined in named namespaces",
+          "fullDescription": "Types are declared in namespaces in order to prevent name collisions and as a way to organize them into the object hierarchy. Types that are defined outside any named namespace are in a global namespace that cannot be referenced in code.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3903",
+          "properties": {
+            "category": "Major Bug",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
