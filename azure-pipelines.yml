@@ -10,6 +10,12 @@ pool:
 
 steps:
 
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '17'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
+
 - script: |
     dotnet tool install --global dotnet-sonarscanner
     dotnet sonarscanner begin /o:studentmanagementsystem /k:studentmanagementsystem_shiv /d:sonar.host.url=https://sonarcloud.io
