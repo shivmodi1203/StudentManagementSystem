@@ -35,7 +35,7 @@ steps:
     jdkSourceOption: 'LocalDirectory'
     jdkFile: '/home/einfochips/Downloads/openjdk-17_linux-x64_bin.tar.gz'
     jdkDestinationDirectory: '/home/einfochips/myagent/_work/9/s/'
-    cleanDestinationDirectory: true
+    cleanDestinationDirectory: false
 
 - task: SonarQubeAnalyze@5
   inputs:
