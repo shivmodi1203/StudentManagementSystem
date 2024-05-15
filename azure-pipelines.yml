@@ -37,9 +37,11 @@ steps:
   inputs:
     SonarCloud: 'sonar_cloud_token'
     organization: 'studentmanagementsystem'
-    scannerMode: 'MSBuild'
-    projectKey: 'studentmanagementsystem_shiv'
-    projectName: 'myProject'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'studentmanagementsystem_shiv'
+    cliProjectName: 'studentmanagementsystem'
+    cliSources: '.'
 
 - task: DotNetCoreCLI@2
   inputs:
