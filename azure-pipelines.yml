@@ -14,43 +14,46 @@ variables:
 
 steps:
 
-# - task: JavaToolInstaller@0
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '17'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'LocalDirectory'
+    jdkFile: '/home/einfochips/Downloads/openjdk-17_linux-x64_bin.tar.gz'
+    jdkDestinationDirectory: '/home/einfochips/myagent/_work/9/s'
+    cleanDestinationDirectory: false
+
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      dotnet tool install --global dotnet-sonarscanner
+      export SONAR_TOKEN=$(sonarVar)
+      dotnet sonarscanner begin /o:studentmanagementsystem /k:studentmanagementsystem_shiv /d:sonar.host.url=https://sonarcloud.io
+      dotnet build
+      dotnet sonarscanner end
+    workingDirectory: '.'
+
+# - task: SonarCloudPrepare@1
 #   inputs:
-#     versionSpec: '17'
-#     jdkArchitectureOption: 'x64'
-#     jdkSourceOption: 'PreInstalled'
+#     SonarCloud: 'sonar_cloud_token'
+#     organization: 'studentmanagementsystem'
+#     scannerMode: 'CLI'
+#     configMode: 'manual'
+#     cliProjectKey: 'studentmanagementsystem_shiv'
+#     cliProjectName: 'studentmanagementsystem'
+#     cliSources: '.'
 
-
-# - task: Bash@3
+# - task: DotNetCoreCLI@2
 #   inputs:
-#     targetType: 'inline'
-#     script: |
-#       dotnet tool install --global dotnet-sonarscanner
-#       export SONAR_TOKEN=$(sonarVar)
-#       dotnet sonarscanner begin /o:studentmanagementsystem /k:studentmanagementsystem_shiv /d:sonar.host.url=https://sonarcloud.io
-#       dotnet build
-#       dotnet sonarscanner end
-#     workingDirectory: '.'
+#     command: 'build'
+#     projects: '**/*.csproj'
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'sonar_cloud_token'
-    organization: 'studentmanagementsystem'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'studentmanagementsystem_shiv'
-    cliProjectName: 'studentmanagementsystem'
-    cliSources: '.'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-
-- task: SonarCloudAnalyze@1
-  inputs:
-    jdkversion: 'JAVA_HOME_17_X64'
+# - task: SonarCloudAnalyze@1
+#   inputs:
+#     jdkversion: 'JAVA_HOME_17_X64'
     
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
+# - task: SonarCloudPublish@1
+#   inputs:
+#     pollingTimeoutSec: '300'
