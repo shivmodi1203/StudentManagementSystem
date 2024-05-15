@@ -5,8 +5,7 @@
 
 trigger: none
 
-pool: 
-  vmImage: ubuntu-latest
+pool: default
 
 variables:
 - group: myVaribales
@@ -15,11 +14,11 @@ variables:
 
 steps:
 
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '17'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
+# - task: JavaToolInstaller@0
+#   inputs:
+#     versionSpec: '17'
+#     jdkArchitectureOption: 'x64'
+#     jdkSourceOption: 'PreInstalled'
 
 
 # - task: Bash@3
