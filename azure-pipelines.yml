@@ -18,15 +18,10 @@ steps:
 
 - task: SonarQubePrepare@5
   inputs:
-    SonarQube: 'sonar'
+    SonarQube: 'sonar_local'
     scannerMode: 'MSBuild'
-    projectKey: 'shiv-_Test_shiv-_Test_fc00f397-6d3b-4a9c-b7fd-cc849db08a71'
+    projectKey: 'shiv-_Test_shiv-_Test_a4655216-f086-4e9e-8e88-524f27430e54'
     projectName: '.NET-Project'
-    extraProperties: |
-      # Additional properties that will be passed to the scanner, 
-      # Put one key=value per line, example:
-      # sonar.exclusions=**/*.bin
-      sonar.branch.name=main
 
 - task: DotNetCoreCLI@2
   displayName: Build
@@ -35,13 +30,16 @@ steps:
     projects: '**/*.csproj'
 - task: JavaToolInstaller@0
   inputs:
-    versionSpec: '21'
+    versionSpec: '17'
     jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
+    jdkSourceOption: 'LocalDirectory'
+    jdkFile: '/home/einfochips/Downloads/openjdk-17_linux-x64_bin.tar.gz'
+    jdkDestinationDirectory: '/home/einfochips/myagent/_work/9/s/'
+    cleanDestinationDirectory: true
 
 - task: SonarQubeAnalyze@5
   inputs:
-    jdkversion: 'JAVA_HOME_21_X64'
+    jdkversion: 'JAVA_HOME_17_X64'
 
 - task: SonarQubePublish@5
   inputs:
