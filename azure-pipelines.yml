@@ -15,15 +15,13 @@ steps:
 #     command: 'restore'
 #     projects: '**/*.csproj'
 #     feedsToUse: 'select'
-
-- task: SonarQubePrepare@5
+- task: SonarCloudPrepare@1
   inputs:
-    SonarQube: 'sonar_cloud'
+    SonarCloud: 'sonar_cloud_token'
+    organization: 'studentmanagementsystem'
     scannerMode: 'MSBuild'
     projectKey: 'studentmanagementsystem_shiv'
-    projectName: '.NET-Project'
-    extraProperties: 'sonar.verbose=true'
-
+    projectName: 'myProject'
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -37,12 +35,10 @@ steps:
     jdkFile: '/home/einfochips/Downloads/openjdk-17_linux-x64_bin.tar.gz'
     jdkDestinationDirectory: '/home/einfochips/myagent/_work/9/s/'
     cleanDestinationDirectory: false
-
-- task: SonarQubeAnalyze@5
+- task: SonarCloudAnalyze@1
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
-
-- task: SonarQubePublish@5
+- task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
 
