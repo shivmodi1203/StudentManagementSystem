@@ -17,9 +17,9 @@ steps:
 
 - task: SonarQubePrepare@5
   inputs:
-    SonarQube: 'sonar_local'
+    SonarQube: 'sonar_cloud'
     scannerMode: 'MSBuild'
-    projectKey: 'shiv-_Test_shiv-_Test_a4655216-f086-4e9e-8e88-524f27430e54'
+    projectKey: 'studentmanagementsystem_shiv'
     projectName: '.NET-Project'
     extraProperties: 'sonar.verbose=true'
 
