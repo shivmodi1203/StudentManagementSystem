@@ -22,13 +22,34 @@ steps:
     jdkSourceOption: 'PreInstalled'
 
 
-- task: Bash@3
+# - task: Bash@3
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       dotnet tool install --global dotnet-sonarscanner
+#       export SONAR_TOKEN=$(sonarVar)
+#       dotnet sonarscanner begin /o:studentmanagementsystem /k:studentmanagementsystem_shiv /d:sonar.host.url=https://sonarcloud.io
+#       dotnet build
+#       dotnet sonarscanner end
+#     workingDirectory: '.'
+
+- task: SonarCloudPrepare@1
   inputs:
-    targetType: 'inline'
-    script: |
-      dotnet tool install --global dotnet-sonarscanner
-      export SONAR_TOKEN=$(sonarVar)
-      dotnet sonarscanner begin /o:studentmanagementsystem /k:studentmanagementsystem_shiv /d:sonar.host.url=https://sonarcloud.io
-      dotnet build
-      dotnet sonarscanner end
-    workingDirectory: '.'
+    SonarCloud: 'sonar_cloud_token'
+    organization: 'studentmanagementsystem'
+    scannerMode: 'MSBuild'
+    projectKey: 'studentmanagementsystem_shiv'
+    projectName: 'myProject'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+
+- task: SonarCloudAnalyze@1
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
+    
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
