@@ -11,12 +11,14 @@ smtp_port = 587                 # Standard secure SMTP port
 smtp_server = "smtp.gmail.com"  # Google SMTP Server
 
 # Set up the email lists
-email_from = ""
-email_list = [""]
+# email_from = ""
+email_from = os.environ["EMAIL"]
+# email_list = [""]
+email_list = os.environ["EMAIL"]
 
 # Define the password (better to reference externally)
-pswd = "" # As shown in the video this password is now dead, left in as example only
-
+#pswd = "" # As shown in the video this password is now dead, left in as example only
+pswd = os.environ["PASS"]
 
 # name the email subject
 subject = "New email from TIE with attachments!!"
