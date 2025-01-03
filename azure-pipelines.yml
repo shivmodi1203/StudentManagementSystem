@@ -11,9 +11,9 @@ trigger:
     exclude:
       - main
 
-# pool:
-#   vmImage: ubuntu-latest
-pool: default
+pool:
+  vmImage: ubuntu-latest
+# pool: default
 
 variables:
   isTagOriented: 
